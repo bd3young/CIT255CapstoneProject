@@ -59,6 +59,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="RelayCommand.cs" />
     <Page Include="PresentationLayer\MonsterDexView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -72,6 +73,7 @@
     <Compile Include="Models\Location.cs" />
     <Compile Include="Models\MonsterDexViewModel.cs" />
     <Compile Include="Models\Monster.cs" />
+    <Compile Include="ObservableObject.cs" />
     <Compile Include="PresentationLayer\MonsterDexView.xaml.cs">
       <DependentUpon>MonsterDexView.xaml</DependentUpon>
     </Compile>
