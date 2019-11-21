@@ -65,7 +65,13 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataLayer\MonsterSeedData.cs" />
+    <Compile Include="DataLayer\Repository\IMonstersRepository.cs" />
+    <Compile Include="DataLayer\Repository\MonstersRepository.cs" />
+    <Compile Include="Models\Element.cs" />
+    <Compile Include="Models\Location.cs" />
     <Compile Include="Models\MonsterDexViewModel.cs" />
+    <Compile Include="Models\Monster.cs" />
     <Compile Include="PresentationLayer\MonsterDexView.xaml.cs">
       <DependentUpon>MonsterDexView.xaml</DependentUpon>
     </Compile>
