@@ -11,7 +11,7 @@ namespace MonsterDex.Models
 
         #region ENUM
 
-        public enum LocationType { AncientForest, WildspireWaste, CoralHighlands, RottenVale, EldersRecess }
+        public enum LocationType { AncientForest, WildspireWaste, CoralHighlands, RottenVale, EldersRecess, TheGuidingLands }
 
         #endregion
 
