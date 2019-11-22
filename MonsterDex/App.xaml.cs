@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using MonsterDex.BusinessLayer;
 
 namespace MonsterDex
 {
@@ -13,5 +14,11 @@ namespace MonsterDex
     /// </summary>
     public partial class App : Application
     {
+
+        private void Application_Startup(object sender, StartupEventArgs e)
+        {
+            MonsterBusiness monsterBuisness = new MonsterBusiness();
+        }
+
     }
 }

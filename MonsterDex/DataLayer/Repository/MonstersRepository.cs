@@ -15,20 +15,20 @@ namespace MonsterDex.DataLayer.Repository
 
         public MonstersRepository()
         {
-            _dataService = SetDataService();
+            //_dataService = SetDataService();
             _monsters = _dataService.ReadAll() as List<Monster>;
         }
 
-        private IDataService SetDataService()
-        {
-            switch (DataConfig.dataType)
-            {
-                case DataType.SEED:
-                    return new MonsterSeedData();
-                default:
-                    break;
-            }
-        }
+        //private IDataService SetDataService()
+        //{
+        //    switch (DataConfig.dataType)
+        //    {
+        //        case DataType.SEED:
+        //            return new MonsterSeedData();
+        //        default:
+        //            break;
+        //    }
+        //}
 
         public void Add(Monster monster)
         {

@@ -19,8 +19,13 @@ namespace MonsterDex.PresentationLayer
     /// </summary>
     public partial class MonsterDexView : Window
     {
+
+        MonsterDexViewModel _monsterDexViewModel;
+
         public MonsterDexView()
         {
+
+
             InitializeComponent();
         }
     }
