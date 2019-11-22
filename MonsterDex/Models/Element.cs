@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MonsterDex.Models
 {
-    class Element
+    public class Element
     {
         #region ENUM
 

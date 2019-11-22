@@ -59,6 +59,12 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="BusinessLayer\MonsterBusiness.cs" />
+    <Compile Include="DataLayer\DataConfig.cs" />
+    <Compile Include="DataLayer\DataServiceXml.cs" />
+    <Compile Include="DataLayer\IDataService.cs" />
+    <Compile Include="Models\DataType.cs" />
+    <Compile Include="ObservableObject.cs" />
     <Compile Include="RelayCommand.cs" />
     <Page Include="PresentationLayer\MonsterDexView.xaml">
       <SubType>Designer</SubType>
@@ -73,7 +79,6 @@
     <Compile Include="Models\Location.cs" />
     <Compile Include="Models\MonsterDexViewModel.cs" />
     <Compile Include="Models\Monster.cs" />
-    <Compile Include="ObservableObject.cs" />
     <Compile Include="PresentationLayer\MonsterDexView.xaml.cs">
       <DependentUpon>MonsterDexView.xaml</DependentUpon>
     </Compile>
@@ -110,8 +115,6 @@
     <Resource Include="DataLayer\Media\rathian.png" />
     <Resource Include="DataLayer\Media\zinogre.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="BusinessLayer\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

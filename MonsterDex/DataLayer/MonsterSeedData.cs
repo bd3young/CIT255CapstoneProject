@@ -9,8 +9,10 @@ namespace MonsterDex.DataLayer
 {
     class MonsterSeedData
     {
-        public static List<Monster> monsters = new List<Monster>()
+        public static List<Monster> GenerateListOfMonsters()
         {
+            List<Monster> monsters = new List<Monster>()
+            {
             new Monster()
             {
                 Id = 1,
@@ -231,6 +233,8 @@ namespace MonsterDex.DataLayer
                 },
                 ImageFileName = "glavenus.png"
             }
-        };
+            };
+            return monsters;
+        }
     }
 }

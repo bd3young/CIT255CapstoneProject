@@ -3,14 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections.ObjectModel;
 
 namespace MonsterDex.Models
 {
-    class Monster
+    public class Monster : ObservableObject
     {
         #region ENUMS
 
         public enum SpeciesType { FangedWyvern, BirdWyvern, BruteWyvern, PiscineWyvern, FlyingWyvern, ElderDragon }
+
+        private Dictionary<string, SpeciesType> BinaryOperations = new Dictionary<string, SpeciesType>()
+        {
+            { "Fanged Wyvern", SpeciesType.FangedWyvern },
+            { "Bird Wyvern", SpeciesType.BirdWyvern },
+            { "Brute Wyvern", SpeciesType.BruteWyvern },
+            { "Piscine Wyvern", SpeciesType.PiscineWyvern },
+            { "Flying Wyvern", SpeciesType.FlyingWyvern },
+            { "Elder Dragon", SpeciesType.ElderDragon },
+        };
 
         #endregion
 
@@ -24,9 +35,7 @@ namespace MonsterDex.Models
         private List<Location> _location;
         private string _imageFileName;
         private string _imageFilePath;
-
-
-   
+        private ObservableCollection<Monster> _monsters;
 
         #endregion
 
@@ -79,6 +88,13 @@ namespace MonsterDex.Models
             get { return _imageFilePath; }
             set { _imageFilePath = value; }
         }
+
+        public ObservableCollection<Monster> Monsters
+        {
+            get { return _monsters; }
+            set { _monsters = value; }
+        }   
+
 
         #endregion
 

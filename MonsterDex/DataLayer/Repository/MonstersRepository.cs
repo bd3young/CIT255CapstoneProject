@@ -10,36 +10,59 @@ namespace MonsterDex.DataLayer.Repository
 {
     class MonstersRepository : IMonstersRepository, IDisposable
     {
+        private IDataService _dataService;
+        List<Monster> _monsters;
 
+        public MonstersRepository()
+        {
+            _dataService = SetDataService();
+            _monsters = _dataService.ReadAll() as List<Monster>;
+        }
+
+        private IDataService SetDataService()
+        {
+            switch (DataConfig.dataType)
+            {
+                case DataType.SEED:
+                    return new MonsterSeedData();
+                default:
+                    break;
+            }
+        }
 
         public void Add(Monster monster)
         {
-            throw new NotImplementedException();
+            _monsters.Add(monster);
+            _dataService.WriteAll(_monsters);
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            _monsters.Remove(_monsters.FirstOrDefault(c => c.Id == id));
+            _dataService.WriteAll(_monsters);
         }
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            _dataService = null;
+            _monsters = null;
         }
 
         public IEnumerable<Monster> GetAll()
         {
-            throw new NotImplementedException();
+            return _monsters;
         }
 
         public Monster GetById(int id)
         {
-            throw new NotImplementedException();
+            return _monsters.FirstOrDefault(c => c.Id == id);
         }
 
         public void Update(Monster monster)
         {
-            throw new NotImplementedException();
+            _monsters.Remove(_monsters.FirstOrDefault(c => c.Id == monster.Id));
+            _monsters.Add(monster);
+            _dataService.WriteAll(_monsters);
         }
     }
 }
