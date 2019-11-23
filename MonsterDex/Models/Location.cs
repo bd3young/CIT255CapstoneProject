@@ -27,7 +27,7 @@ namespace MonsterDex.Models
 
         #region FEILDS
 
-        public LocationType Name { get; set; }  
+        public LocationType MonsterLocation { get; set; }  
 
         #endregion
 

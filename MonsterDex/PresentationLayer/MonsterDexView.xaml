@@ -48,7 +48,7 @@
                               Grid.Row="1"
                               Height="410"
                               Background="SaddleBrown"
-                              ItemsSource="{Binding allMonsters.Name}">
+                              ItemsSource="{Binding MonsterName}">
                         </DataGrid>
                     </Border>
                 </Grid>

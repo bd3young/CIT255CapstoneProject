@@ -15,11 +15,15 @@ namespace MonsterDex.BusinessLayer
 
         MonsterDexViewModel _monsterDexViewModel;
         List<Monster> _allMonsters = new List<Monster>();
+        List<string> _monsterName = new List<string>();
 
-        MonsterBusiness()
+        public MonsterBusiness()
         {
+
             SetupMonsters();
+
         }
+
 
         private void SetupMonsters()
         {
@@ -30,12 +34,27 @@ namespace MonsterDex.BusinessLayer
             else
             {
                 _allMonsters = MonsterSeedData.GenerateListOfMonsters();
+                GetMonsterName();
+                InstantiateAndShowView();
+            }
+        }
+
+        private void GetMonsterName()
+        {
+            foreach (Monster MonsterName in _allMonsters)
+            {
+                _monsterName.Add(MonsterName.Name);
             }
         }
 
         private void InstantiateAndShowView()
         {
-            _monsterDexViewModel = new MonsterDexViewModel(_allMonsters);
+            _monsterDexViewModel = new MonsterDexViewModel(_allMonsters, _monsterName);
+            MonsterDexView monsterDexView = new MonsterDexView(_monsterDexViewModel);
+
+            monsterDexView.DataContext = _monsterDexViewModel;
+
+            monsterDexView.Show();
         }
     }
 }
