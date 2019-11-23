@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace Demo_WpfCalculator_BindingCommands
+namespace MonsterDex
 {
     class RelayCommand : ICommand
     {

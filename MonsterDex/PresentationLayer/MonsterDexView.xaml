@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MonsterDex.PresentationLayer"
+        xmlns:viewModel="clr-namespace:MonsterDex.PresentationLayer"
         mc:Ignorable="d"
         Title="MonsterDexView" Height="600" Width="1100" Background="Green">
     <Window.Resources>
@@ -20,7 +21,19 @@
             <Setter Property="FontSize" Value="20"/>
             <Setter Property="Background" Value="LightGray"/>
         </Style>
+        <Style x:Key="ViewLabelStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+        </Style>
+        <Style x:Key="ViewTextBoxStyle" TargetType="TextBox">
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="IsReadOnly" Value="True"/>
+        </Style>
     </Window.Resources>
+    <Window.DataContext>
+        <viewModel:MonsterDexViewModel/>
+    </Window.DataContext>
     <Grid>
         <StackPanel >
             <Label Content="Monster Dex"
@@ -46,9 +59,11 @@
                             Style="{StaticResource BorderStyle}">
                         <DataGrid Grid.Column="0"
                               Grid.Row="1"
+                              x:Name="MonsterDataGrid"
                               Height="410"
                               Background="SaddleBrown"
-                              ItemsSource="{Binding MonsterName}">
+                              ItemsSource="{Binding AllMonsters}"
+                              SelectedItem="{Binding CurrentMonster}">
                         </DataGrid>
                     </Border>
                 </Grid>
@@ -61,16 +76,24 @@
                     </Grid.RowDefinitions>
                     <Button Style="{StaticResource ButtonStyle}"
                             Grid.Row="0"
-                            Content="VIEW"/>
+                            Content="VIEW"
+                            Command="{Binding ButtonCommand}"
+                            CommandParameter="View"/>
                     <Button Style="{StaticResource ButtonStyle}"
                             Grid.Row="1"
-                            Content="ADD"/>
+                            Content="ADD"
+                            Command="{Binding ButtonCommand}"
+                            CommandParameter="Add"/>
                     <Button Style="{StaticResource ButtonStyle}"
                             Grid.Row="2"
-                            Content="UPDATE"/>
+                            Content="UPDATE"
+                            Command="{Binding ButtonCommand}"
+                            CommandParameter="Update"/>
                     <Button Style="{StaticResource ButtonStyle}"
                             Grid.Row="3"
-                            Content="DELETE"/>
+                            Content="DELETE"
+                            Command="{Binding ButtonCommand}"
+                            CommandParameter="Delete"/>
                 </Grid>
                 <Grid Grid.Column="2">
                     <Grid.RowDefinitions>
@@ -90,16 +113,75 @@
                               Height="410"
                               Background="SaddleBrown"
                               >
-                            <TabItem Visibility="Collapsed">
-                                
+                            <TabItem Visibility="Collapsed"
+                                     Header="View">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="3*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="1*"/>
+                                        <RowDefinition Height="1*"/>
+                                        <RowDefinition Height="1*"/>
+                                        <RowDefinition Height="1*"/>
+                                        <RowDefinition Height="1*"/>
+                                        <RowDefinition Height="1*"/>
+                                        <RowDefinition Height="4*"/>
+                                    </Grid.RowDefinitions>
+                                    <Label Grid.Row="0"
+                                            Content="ID:"
+                                            Style="{StaticResource ViewLabelStyle}"/>
+                                    <TextBox Grid.Column="1" 
+                                        Grid.Row="0"
+                                        Style="{StaticResource ViewTextBoxStyle}"/>
+                                    <Label Grid.Row="1"
+                                            Content="Name:"
+                                            Style="{StaticResource ViewLabelStyle}"/>
+                                    <TextBox Grid.Column="1" 
+                                        Grid.Row="1"
+                                        Style="{StaticResource ViewTextBoxStyle}"/>
+                                    <Label Grid.Row="2"
+                                            Content="Type:"
+                                            Style="{StaticResource ViewLabelStyle}"/>
+                                    <TextBox Grid.Column="1" 
+                                        Grid.Row="2"
+                                        Style="{StaticResource ViewTextBoxStyle}"/>
+                                    <Label Grid.Row="3"
+                                            Content="Element:"
+                                            Style="{StaticResource ViewLabelStyle}"/>
+                                    <TextBox Grid.Column="1" 
+                                        Grid.Row="3"
+                                        Style="{StaticResource ViewTextBoxStyle}"/>
+                                    <Label Grid.Row="4"
+                                            Content="Weakness:"
+                                            Style="{StaticResource ViewLabelStyle}"/>
+                                    <TextBox Grid.Column="1" 
+                                        Grid.Row="4"
+                                        Style="{StaticResource ViewTextBoxStyle}"/>
+                                    <Label Grid.Row="5"
+                                            Content="Locations:"
+                                            Style="{StaticResource ViewLabelStyle}"/>
+                                    <TextBox Grid.Column="1" 
+                                        Grid.Row="5"
+                                        Style="{StaticResource ViewTextBoxStyle}"/>
+                                    <Label Grid.Row="6"
+                                            Content="Image:"
+                                            Style="{StaticResource ViewLabelStyle}"
+                                           VerticalAlignment="Center"/>
+                                    <Image />
+                                </Grid>
                             </TabItem>
-                            <TabItem Visibility="Collapsed">
-                                
-                            </TabItem>
-                            <TabItem Visibility="Collapsed">
+                            <TabItem Visibility="Collapsed"
+                                     Header="Add">
 
                             </TabItem>
-                            <TabItem Visibility="Collapsed">
+                            <TabItem Visibility="Collapsed"
+                                     Header="Update">
+
+                            </TabItem>
+                            <TabItem Visibility="Collapsed"
+                                     Header="Delete">
 
                             </TabItem>
                         </TabControl>
