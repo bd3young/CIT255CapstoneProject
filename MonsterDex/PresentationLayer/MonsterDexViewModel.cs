@@ -55,22 +55,24 @@ namespace MonsterDex.PresentationLayer
         {
             get { return _currentMonster; }
             set { _currentMonster = value; }
-        }   
-
-        #endregion
-
-        #region CONSTRUCTORS
-
-        public MonsterDexViewModel(List<Monster> allMonsters, List<int> monsterId, List<string> monsterName)
-        {
-            InitializeViewModel( allMonsters, monsterId, monsterName);
         }
 
-        #endregion
+		#endregion
 
-        #region METHODS
+		#region CONSTRUCTORS
 
-        public void InitializeViewModel(List<Monster> allMonsters, List<int> monsterId, List<string> monsterName)
+		public MonsterDexViewModel(List<Monster> allMonsters, List<int> monsterId, List<string> monsterName)
+		{
+
+			InitializeViewModel(allMonsters, monsterId, monsterName);
+
+		}
+
+		#endregion
+
+		#region METHODS
+
+		public void InitializeViewModel(List<Monster> allMonsters, List<int> monsterId, List<string> monsterName)
         {   
             _allMonsters = allMonsters;
             _monsterId = monsterId;

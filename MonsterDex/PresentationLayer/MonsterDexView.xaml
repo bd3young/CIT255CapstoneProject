@@ -31,9 +31,9 @@
             <Setter Property="IsReadOnly" Value="True"/>
         </Style>
     </Window.Resources>
-    <Window.DataContext>
+    <!--<Window.DataContext>
         <viewModel:MonsterDexViewModel/>
-    </Window.DataContext>
+    </Window.DataContext>-->
     <Grid>
         <StackPanel >
             <Label Content="Monster Dex"
