@@ -64,6 +64,7 @@
     <Compile Include="DataLayer\DataServiceXml.cs" />
     <Compile Include="DataLayer\IDataService.cs" />
     <Compile Include="Models\DataType.cs" />
+    <Compile Include="Models\FileIoMessage.cs" />
     <Compile Include="ObservableObject.cs" />
     <Compile Include="RelayCommand.cs" />
     <Page Include="PresentationLayer\MonsterDexView.xaml">
@@ -77,7 +78,7 @@
     <Compile Include="DataLayer\Repository\MonstersRepository.cs" />
     <Compile Include="Models\Element.cs" />
     <Compile Include="Models\Location.cs" />
-    <Compile Include="PresentationLayer\MonsterDexViewModel.cs" />
+    <Compile Include="ViewModel\MonsterDexViewModel.cs" />
     <Compile Include="Models\Monster.cs" />
     <Compile Include="PresentationLayer\MonsterDexView.xaml.cs">
       <DependentUpon>MonsterDexView.xaml</DependentUpon>

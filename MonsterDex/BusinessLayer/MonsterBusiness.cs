@@ -5,58 +5,61 @@ using System.Text;
 using System.Threading.Tasks;
 using MonsterDex.Models;
 using MonsterDex.DataLayer;
+using MonsterDex.DataLayer.Repository;
 using MonsterDex.PresentationLayer;
 
 namespace MonsterDex.BusinessLayer
 {
-    public class MonsterBusiness
-    {
-        bool _xmlBool = false;
+	public class MonsterBusiness
+	{
+		public FileIoMessage FileIoStatus { get; set; }
+		bool _xmlBool = false;
 
-        MonsterDexViewModel _monsterDexViewModel;
-        List<Monster> _allMonsters = new List<Monster>();
-        List<string> _monsterName = new List<string>();
-        List<int> _monsterId = new List<int>();
-
-        public MonsterBusiness()
-        {
-
-            SetupMonsters();
-
-        }
+		public MonsterBusiness()
+		{
 
 
-        private void SetupMonsters()
-        {
-            if (_xmlBool)
-            {
 
-            }
-            else
-            {
-                _allMonsters = MonsterSeedData.GenerateListOfMonsters();
-                GetMonsterNameId();
-                InstantiateAndShowView();
-            }
-        }
+		}
 
-        private void GetMonsterNameId()
-        {
-            foreach (Monster MonsterName in _allMonsters)
-            {
-                _monsterId.Add(MonsterName.Id);
-                _monsterName.Add(MonsterName.Name);
-            }
-        }
+		public List<Monster> AllMonsters()
+		{
+			return GetAllMonsters() as List<Monster>;
+		}
 
-        private void InstantiateAndShowView()
-        {
-            _monsterDexViewModel = new MonsterDexViewModel(_allMonsters, _monsterId, _monsterName);
-            MonsterDexView monsterDexView = new MonsterDexView(_monsterDexViewModel);
+		private List<Monster> GetAllMonsters()
+		{
+			List<Monster> monsters = null;
+			FileIoStatus = FileIoMessage.None;
+			if (_xmlBool)
+			{
+				try
+				{
+					using (MonstersRepository monstersRepository = new MonstersRepository())
+					{
+						monsters = monstersRepository.GetAll() as List<Monster>;
+					};
 
-            monsterDexView.DataContext = _monsterDexViewModel;
+					if (monsters != null)
+					{
+						FileIoStatus = FileIoMessage.Complete;
+					}
+					else
+					{
+						FileIoStatus = FileIoMessage.NoRecordsFound;
+					}
+				}
+				catch (Exception)
+				{
+					FileIoStatus = FileIoMessage.FileAccessError;
+				}
+			}
+			else
+			{
+				monsters = MonsterSeedData.GenerateListOfMonsters();
+			}
 
-            monsterDexView.Show();
-        }
-    }
+			return monsters;
+		}
+	}
 }

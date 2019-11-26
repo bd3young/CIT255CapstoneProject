@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MonsterDex.PresentationLayer"
-        xmlns:viewModel="clr-namespace:MonsterDex.PresentationLayer"
+        xmlns:viewModel="clr-namespace:MonsterDex.ViewModel"
         mc:Ignorable="d"
         Title="MonsterDexView" Height="600" Width="1100" Background="Green">
     <Window.Resources>
@@ -31,9 +31,9 @@
             <Setter Property="IsReadOnly" Value="True"/>
         </Style>
     </Window.Resources>
-    <!--<Window.DataContext>
+    <Window.DataContext>
         <viewModel:MonsterDexViewModel/>
-    </Window.DataContext>-->
+    </Window.DataContext>
     <Grid>
         <StackPanel >
             <Label Content="Monster Dex"

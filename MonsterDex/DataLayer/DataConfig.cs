@@ -14,6 +14,8 @@ namespace MonsterDex.DataLayer
         //public static DataType dataType = DataType.SEED;
 
         public static string DataPathXml;
+		public static string ImagePath => @"\DataLayer\Media\";
+
         //public static string DataPathSeed = MonsterSeedData.GenerateListOfMonsters;
 
     }

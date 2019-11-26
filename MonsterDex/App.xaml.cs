@@ -6,6 +6,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using MonsterDex.BusinessLayer;
+using MonsterDex.ViewModel;
+using MonsterDex.PresentationLayer;
 
 namespace MonsterDex
 {
@@ -18,6 +20,11 @@ namespace MonsterDex
         private void Application_Startup(object sender, StartupEventArgs e)
         {
             MonsterBusiness monsterBuisness = new MonsterBusiness();
+			MonsterDexViewModel monsterDexViewModel = new MonsterDexViewModel(monsterBuisness);
+
+			MonsterDexView monsterDexView = new MonsterDexView();
+			monsterDexView.DataContext = monsterDexViewModel;
+			monsterDexView.Show();
         }
 
     }

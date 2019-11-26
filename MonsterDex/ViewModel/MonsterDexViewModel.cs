@@ -5,9 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using MonsterDex.Models;
 using System.Collections;
+using System.Windows;
 using System.Windows.Input;
+using MonsterDex.BusinessLayer;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using MonsterDex.DataLayer;
 
-namespace MonsterDex.PresentationLayer
+namespace MonsterDex.ViewModel
 {
     public class MonsterDexViewModel : ObservableObject
     {
@@ -18,13 +23,20 @@ namespace MonsterDex.PresentationLayer
 
         #region PROPERTIES
 
-        private List<Monster> _allMonsters;
+        private ObservableCollection<Monster> _allMonsters;
         private List<string> _monsterName;
         private List<int> _monsterId;
 
-        private Monster _currentMonster;
+        private Monster _selectedMonster;
+		private Monster _detailedViewMonster;
 
-        public ICommand ButtonCommand { get; set; }
+		
+
+		private MonsterBusiness _monsterBusiness;
+
+
+
+		public ICommand ButtonCommand { get; set; }
 
 
         #endregion
@@ -33,7 +45,7 @@ namespace MonsterDex.PresentationLayer
 
 
 
-        public List<Monster> AllMonsters
+        public ObservableCollection<Monster> AllMonsters
         {
             get { return _allMonsters; }
             set { _allMonsters = value; }
@@ -51,32 +63,66 @@ namespace MonsterDex.PresentationLayer
             set { _monsterId = value; }
         }   
 
-        public Monster CurrentMonster
+        public Monster SelectedMonster
         {
-            get { return _currentMonster; }
-            set { _currentMonster = value; }
+            get { return _selectedMonster; }
+            set
+			{
+				if (_selectedMonster == value)
+				{
+					return;
+				}
+				_selectedMonster = value;
+				
+			}
         }
+
+		public Monster DetailedViewMonster
+		{
+			get { return _detailedViewMonster; }
+			set
+			{
+				if (_detailedViewMonster == value)
+				{
+					return;
+				}
+				_detailedViewMonster = value;
+			}
+		}
 
 		#endregion
 
 		#region CONSTRUCTORS
 
-		public MonsterDexViewModel(List<Monster> allMonsters, List<int> monsterId, List<string> monsterName)
+		public MonsterDexViewModel()
 		{
 
-			InitializeViewModel(allMonsters, monsterId, monsterName);
+		}
 
+		public MonsterDexViewModel(MonsterBusiness monsterBuissness)
+		{
+
+			_monsterBusiness = monsterBuissness;
+			_allMonsters = new ObservableCollection<Monster>(monsterBuissness.AllMonsters());
+			UpdateImagePath();
+
+		}
+
+		private void UpdateImagePath()
+		{
+			foreach (var monster in _allMonsters)
+			{
+				monster.ImageFilePath = DataConfig.ImagePath + monster.ImageFileName;
+			}
 		}
 
 		#endregion
 
 		#region METHODS
 
-		public void InitializeViewModel(List<Monster> allMonsters, List<int> monsterId, List<string> monsterName)
-        {   
-            _allMonsters = allMonsters;
-            _monsterId = monsterId;
-            _monsterName = monsterName;
+		public void InitializeViewModel(MonsterBusiness monsterBusiness)
+        {
+			_monsterBusiness = monsterBusiness;
 
             ButtonCommand = new RelayCommand(new Action<Object>(ButtonPressed));
 
@@ -106,11 +152,11 @@ namespace MonsterDex.PresentationLayer
 
         private void ViewPressed()
         {
-            //if ()
-            //{
+			//if ()
+			//{
 
-            //}
-        }
+			//}
+		}
 
         private void AddPressed()
         {
