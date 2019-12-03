@@ -57,14 +57,31 @@
                            Grid.Row="0"/>
                     <Border Grid.Row="1"
                             Style="{StaticResource BorderStyle}">
-                        <DataGrid Grid.Column="0"
+                        <ListBox Grid.Column="0"
                               Grid.Row="1"
-                              x:Name="MonsterDataGrid"
+                              x:Name="MonsterListBox"
                               Height="410"
                               Background="SaddleBrown"
                               ItemsSource="{Binding AllMonsters}"
-                              SelectedItem="{Binding CurrentMonster}">
-                        </DataGrid>
+                              IsSynchronizedWithCurrentItem="True"
+                              SelectedItem="{Binding SelectedMonster, Mode=TwoWay}">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel
+                                        Orientation="Vertical">
+                                        <StackPanel
+                                            Orientation="Horizontal">
+                                            <Label
+                                                Content="{Binding Id}"
+                                                Width="120"/>
+                                            <Label
+                                                Content="{Binding Name }"
+                                                Padding="0,5"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
                     </Border>
                 </Grid>
                 <Grid Grid.Column="1">
@@ -131,16 +148,19 @@
                                     </Grid.RowDefinitions>
                                     <Label Grid.Row="0"
                                             Content="ID:"
-                                            Style="{StaticResource ViewLabelStyle}"/>
+                                            Style="{StaticResource ViewLabelStyle}"
+                                           />
                                     <TextBox Grid.Column="1" 
                                         Grid.Row="0"
-                                        Style="{StaticResource ViewTextBoxStyle}"/>
+                                        Style="{StaticResource ViewTextBoxStyle}"
+                                             Text="{Binding DetailedViewMonster.Id}"/>
                                     <Label Grid.Row="1"
                                             Content="Name:"
                                             Style="{StaticResource ViewLabelStyle}"/>
                                     <TextBox Grid.Column="1" 
                                         Grid.Row="1"
-                                        Style="{StaticResource ViewTextBoxStyle}"/>
+                                        Style="{StaticResource ViewTextBoxStyle}"
+                                             Text="{Binding DetailedViewMonster.Name}"/>
                                     <Label Grid.Row="2"
                                             Content="Type:"
                                             Style="{StaticResource ViewLabelStyle}"/>

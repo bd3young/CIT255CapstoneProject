@@ -11,6 +11,7 @@ using MonsterDex.BusinessLayer;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using MonsterDex.DataLayer;
+using MonsterDex.PresentationLayer;
 
 namespace MonsterDex.ViewModel
 {
@@ -24,7 +25,7 @@ namespace MonsterDex.ViewModel
         #region PROPERTIES
 
         private ObservableCollection<Monster> _allMonsters;
-        private List<string> _monsterName;
+        private ObservableCollection<string> _monsterName;
         private List<int> _monsterId;
 
         private Monster _selectedMonster;
@@ -51,7 +52,7 @@ namespace MonsterDex.ViewModel
             set { _allMonsters = value; }
         }
 
-        public List<string> MonsterName
+        public ObservableCollection<string> MonsterName
         {
             get { return _monsterName; }
             set { _monsterName = value; }
@@ -87,6 +88,7 @@ namespace MonsterDex.ViewModel
 					return;
 				}
 				_detailedViewMonster = value;
+				OnPropertyChanged("DetailedViewCharacter");
 			}
 		}
 
@@ -104,7 +106,10 @@ namespace MonsterDex.ViewModel
 
 			_monsterBusiness = monsterBuissness;
 			_allMonsters = new ObservableCollection<Monster>(monsterBuissness.AllMonsters());
+			_monsterName = new ObservableCollection<string>();
+			GetMonsterName();
 			UpdateImagePath();
+			ButtonCommand = new RelayCommand(new Action<Object>(ButtonPressed));
 
 		}
 
@@ -120,11 +125,23 @@ namespace MonsterDex.ViewModel
 
 		#region METHODS
 
+		public void GetMonsterName()
+		{
+
+			foreach (var monstersName in _allMonsters)
+			{
+
+				_monsterName.Add(monstersName.Name);
+
+			}
+
+		}
+
 		public void InitializeViewModel(MonsterBusiness monsterBusiness)
         {
 			_monsterBusiness = monsterBusiness;
 
-            ButtonCommand = new RelayCommand(new Action<Object>(ButtonPressed));
+            
 
 
         }
@@ -152,13 +169,29 @@ namespace MonsterDex.ViewModel
 
         private void ViewPressed()
         {
-			//if ()
-			//{
 
-			//}
+
+			if (_selectedMonster != null)
+			{
+				UpdateDetailedViewCharacterToSelected();
+			}
 		}
 
-        private void AddPressed()
+		private void UpdateDetailedViewCharacterToSelected()
+		{
+			_detailedViewMonster = new Monster();
+			_detailedViewMonster.Id = _selectedMonster.Id;
+			_detailedViewMonster.Name = _selectedMonster.Name;
+			_detailedViewMonster.Species = _selectedMonster.Species;
+			_detailedViewMonster.Element = _selectedMonster.Element;
+			_detailedViewMonster.Weakness = _selectedMonster.Weakness;
+			_detailedViewMonster.Location = _selectedMonster.Location;
+			_detailedViewMonster.ImageFileName = _selectedMonster.ImageFileName;
+			_detailedViewMonster.ImageFilePath = _selectedMonster.ImageFilePath;
+			OnPropertyChanged("DetailedViewMonster");
+		}
+
+		private void AddPressed()
         {
             throw new NotImplementedException();
         }
