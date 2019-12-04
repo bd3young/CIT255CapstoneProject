@@ -25,8 +25,6 @@ namespace MonsterDex.ViewModel
         #region PROPERTIES
 
         private ObservableCollection<Monster> _allMonsters;
-        private ObservableCollection<string> _monsterName;
-        private List<int> _monsterId;
 
         private Monster _selectedMonster;
 		private Monster _detailedViewMonster;
@@ -51,18 +49,6 @@ namespace MonsterDex.ViewModel
             get { return _allMonsters; }
             set { _allMonsters = value; }
         }
-
-        public ObservableCollection<string> MonsterName
-        {
-            get { return _monsterName; }
-            set { _monsterName = value; }
-        } 
-
-        public List<int> MonsterId
-        {
-            get { return _monsterId; }
-            set { _monsterId = value; }
-        }   
 
         public Monster SelectedMonster
         {
@@ -106,8 +92,6 @@ namespace MonsterDex.ViewModel
 
 			_monsterBusiness = monsterBuissness;
 			_allMonsters = new ObservableCollection<Monster>(monsterBuissness.AllMonsters());
-			_monsterName = new ObservableCollection<string>();
-			GetMonsterName();
 			UpdateImagePath();
 			ButtonCommand = new RelayCommand(new Action<Object>(ButtonPressed));
 
@@ -124,18 +108,6 @@ namespace MonsterDex.ViewModel
 		#endregion
 
 		#region METHODS
-
-		public void GetMonsterName()
-		{
-
-			foreach (var monstersName in _allMonsters)
-			{
-
-				_monsterName.Add(monstersName.Name);
-
-			}
-
-		}
 
 		public void InitializeViewModel(MonsterBusiness monsterBusiness)
         {

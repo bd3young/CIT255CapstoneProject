@@ -116,6 +116,8 @@
     <Resource Include="DataLayer\Media\rathian.png" />
     <Resource Include="DataLayer\Media\zinogre.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="DataLayer\DataXml\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

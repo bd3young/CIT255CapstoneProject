@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MonsterDex.Models;
 using MonsterDex.DataLayer;
+using MonsterDex.BusinessLayer;
 
 namespace MonsterDex.DataLayer.Repository
 {
@@ -15,20 +16,29 @@ namespace MonsterDex.DataLayer.Repository
 
         public MonstersRepository()
         {
-            //_dataService = SetDataService();
-            _monsters = _dataService.ReadAll() as List<Monster>;
+            _dataService = SetDataService();
+            try
+            {
+                _monsters = _dataService.ReadAll() as List<Monster>;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            
         }
 
-        //private IDataService SetDataService()
-        //{
-        //    switch (DataConfig.dataType)
-        //    {
-        //        case DataType.SEED:
-        //            return new MonsterSeedData();
-        //        default:
-        //            break;
-        //    }
-        //}
+        private IDataService SetDataService()
+        {
+            switch (DataConfig.dataType)
+            {
+                case DataType.XML:
+                    return new DataServiceXml();
+                default:
+                    throw new Exception();
+            }
+        }
 
         public void Add(Monster monster)
         {

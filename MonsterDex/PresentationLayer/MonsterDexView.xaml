@@ -166,30 +166,67 @@
                                             Style="{StaticResource ViewLabelStyle}"/>
                                     <TextBox Grid.Column="1" 
                                         Grid.Row="2"
-                                        Style="{StaticResource ViewTextBoxStyle}"/>
+                                        Style="{StaticResource ViewTextBoxStyle}"
+                                             Text="{Binding DetailedViewMonster.Species}"/>
                                     <Label Grid.Row="3"
                                             Content="Element:"
                                             Style="{StaticResource ViewLabelStyle}"/>
-                                    <TextBox Grid.Column="1" 
-                                        Grid.Row="3"
-                                        Style="{StaticResource ViewTextBoxStyle}"/>
+                                    <ListBox Grid.Column="1" 
+                                             Grid.Row="3"                                           
+                                             ItemsSource="{Binding DetailedViewMonster.Element}">
+                                        <ListBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackPanel
+                                                    Orientation="Horizontal">
+                                                    <Label
+                                                        Content="{Binding MonsterElement }"
+                                                        Padding="0,5"/>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </ListBox.ItemTemplate>
+                                    </ListBox>
                                     <Label Grid.Row="4"
                                             Content="Weakness:"
                                             Style="{StaticResource ViewLabelStyle}"/>
-                                    <TextBox Grid.Column="1" 
-                                        Grid.Row="4"
-                                        Style="{StaticResource ViewTextBoxStyle}"/>
+                                    <ListBox Grid.Column="1" 
+                                             Grid.Row="4"                                           
+                                             ItemsSource="{Binding DetailedViewMonster.Weakness}">
+                                        <ListBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackPanel
+                                                    Orientation="Horizontal">
+                                                    <Label
+                                                        Content="{Binding MonsterElement }"
+                                                        Padding="0,5"/>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </ListBox.ItemTemplate>
+                                    </ListBox>
                                     <Label Grid.Row="5"
                                             Content="Locations:"
                                             Style="{StaticResource ViewLabelStyle}"/>
-                                    <TextBox Grid.Column="1" 
-                                        Grid.Row="5"
-                                        Style="{StaticResource ViewTextBoxStyle}"/>
+                                    <ListBox Grid.Column="1" 
+                                             Grid.Row="5"                                           
+                                             ItemsSource="{Binding DetailedViewMonster.Location}">
+                                        <ListBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackPanel
+                                                    Orientation="Horizontal">
+                                                    <Label
+                                                        Content="{Binding MonsterLocation }"
+                                                        Padding="0,5"/>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </ListBox.ItemTemplate>
+                                    </ListBox>
                                     <Label Grid.Row="6"
                                             Content="Image:"
+                                           
                                             Style="{StaticResource ViewLabelStyle}"
                                            VerticalAlignment="Center"/>
-                                    <Image />
+                                    <Image Source="{Binding DetailedViewMonster.ImageFilePath}"
+                                           Grid.Row="6"
+                                           Grid.Column="1"/>
                                 </Grid>
                             </TabItem>
                             <TabItem Visibility="Collapsed"
