@@ -155,9 +155,9 @@ namespace MonsterDex.ViewModel
 			_detailedViewMonster.Id = _selectedMonster.Id;
 			_detailedViewMonster.Name = _selectedMonster.Name;
 			_detailedViewMonster.Species = _selectedMonster.Species;
-			_detailedViewMonster.Element = _selectedMonster.Element;
-			_detailedViewMonster.Weakness = _selectedMonster.Weakness;
-			_detailedViewMonster.Location = _selectedMonster.Location;
+			_detailedViewMonster.ElementList = _selectedMonster.ElementList;
+			_detailedViewMonster.WeaknessList = _selectedMonster.WeaknessList;
+			_detailedViewMonster.LocationList = _selectedMonster.LocationList;
 			_detailedViewMonster.ImageFileName = _selectedMonster.ImageFileName;
 			_detailedViewMonster.ImageFilePath = _selectedMonster.ImageFilePath;
 			OnPropertyChanged("DetailedViewMonster");

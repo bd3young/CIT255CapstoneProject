@@ -13,7 +13,7 @@ namespace MonsterDex.BusinessLayer
 	public class MonsterBusiness
 	{
 		public FileIoMessage FileIoStatus { get; set; }
-		bool _xmlBool = false;
+		bool _xmlBool = true;
 
 		public MonsterBusiness()
 		{

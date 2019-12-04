@@ -23,9 +23,11 @@ namespace MonsterDex.DataLayer
 
             try
             {
-                StreamReader reader = new StreamReader(_dataFilePath);
-                using (reader)
+                
+                using (StreamReader reader = new StreamReader(_dataFilePath))
                 {
+                    string xmlString = reader.ReadToEnd();
+
                     monsters = (List<Monster>)serializer.Deserialize(reader);
                 }
 

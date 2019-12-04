@@ -116,8 +116,11 @@
     <Resource Include="DataLayer\Media\rathian.png" />
     <Resource Include="DataLayer\Media\zinogre.png" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="DataLayer\DataXml\" />
+    <Resource Include="DataLayer\DataXml\Monsters.xml">
+      <SubType>Designer</SubType>
+    </Resource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

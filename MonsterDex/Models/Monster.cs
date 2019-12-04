@@ -30,9 +30,9 @@ namespace MonsterDex.Models
         private int _id;
         private string _name;
         private SpeciesType _species;
-        private List<Element> _element;
-        private List<Element> _weakness;
-        private List<Location> _location;
+        private List<Element> _elementList;
+        private List<Element> _weaknessList;
+        private List<Location> _locationList;
         private string _imageFileName;
         private string _imageFilePath;
         private ObservableCollection<Monster> _monsters;
@@ -59,22 +59,22 @@ namespace MonsterDex.Models
             set { _species = value; }
         }
 
-        public List<Element> Element
+        public List<Element> ElementList
         {
-            get { return _element; }
-            set { _element = value; }
+            get { return _elementList; }
+            set { _elementList = value; }
         }
 
-        public List<Element> Weakness
+        public List<Element> WeaknessList
         {
-            get { return _weakness; }
-            set { _weakness = value; }
+            get { return _weaknessList; }
+            set { _weaknessList = value; }
         }   
 
-        public List<Location> Location
+        public List<Location> LocationList
         {
-            get { return _location; }
-            set { _location = value; }
+            get { return _locationList; }
+            set { _locationList = value; }
         }   
 
         public string ImageFileName

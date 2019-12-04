@@ -13,7 +13,7 @@ namespace MonsterDex.DataLayer
         public static DataType dataType = DataType.XML;
         //public static DataType dataType = DataType.SEED;
 
-        public static string DataPathXml;
+        public static string DataPathXml => @"DataLayer\DataXml\Monsters.xml";
 		public static string ImagePath => @"\DataLayer\Media\";
 
         //public static string DataPathSeed = MonsterSeedData.GenerateListOfMonsters;

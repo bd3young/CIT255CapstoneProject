@@ -173,7 +173,7 @@
                                             Style="{StaticResource ViewLabelStyle}"/>
                                     <ListBox Grid.Column="1" 
                                              Grid.Row="3"                                           
-                                             ItemsSource="{Binding DetailedViewMonster.Element}">
+                                             ItemsSource="{Binding DetailedViewMonster.ElementList}">
                                         <ListBox.ItemTemplate>
                                             <DataTemplate>
                                                 <StackPanel
@@ -190,7 +190,7 @@
                                             Style="{StaticResource ViewLabelStyle}"/>
                                     <ListBox Grid.Column="1" 
                                              Grid.Row="4"                                           
-                                             ItemsSource="{Binding DetailedViewMonster.Weakness}">
+                                             ItemsSource="{Binding DetailedViewMonster.WeaknessList}">
                                         <ListBox.ItemTemplate>
                                             <DataTemplate>
                                                 <StackPanel
@@ -207,7 +207,7 @@
                                             Style="{StaticResource ViewLabelStyle}"/>
                                     <ListBox Grid.Column="1" 
                                              Grid.Row="5"                                           
-                                             ItemsSource="{Binding DetailedViewMonster.Location}">
+                                             ItemsSource="{Binding DetailedViewMonster.LocationList}">
                                         <ListBox.ItemTemplate>
                                             <DataTemplate>
                                                 <StackPanel

@@ -18,14 +18,14 @@ namespace MonsterDex.DataLayer
                 Id = 1,
                 Name = "Rathalos",
                 Species = Monster.SpeciesType.FlyingWyvern,
-                Element = new List<Element>()
+                ElementList = new List<Element>()
                 {
                     new Element()
                     {
                         MonsterElement = Element.ElementType.Fire
                     }
                 },
-                Weakness = new List<Element>()
+                WeaknessList = new List<Element>()
                 {
                     new Element()
                     {
@@ -44,7 +44,7 @@ namespace MonsterDex.DataLayer
                         MonsterElement = Element.ElementType.Ice
                     }
                 },
-                Location = new List<Location>()
+                LocationList = new List<Location>()
                 {
                     new Location()
                     {
@@ -63,14 +63,14 @@ namespace MonsterDex.DataLayer
                 Id = 2,
                 Name = "Rathian",
                 Species = Monster.SpeciesType.FlyingWyvern,
-                Element = new List<Element>()
+                ElementList = new List<Element>()
                 {
                     new Element()
                     {
                         MonsterElement = Element.ElementType.Fire
                     }
                 },
-                Weakness = new List<Element>()
+                WeaknessList = new List<Element>()
                 {
                     new Element()
                     {
@@ -81,7 +81,7 @@ namespace MonsterDex.DataLayer
                         MonsterElement = Element.ElementType.Thunder
                     }
                 },
-                Location = new List<Location>()
+                LocationList = new List<Location>()
                 {
                     new Location()
                     {
@@ -100,14 +100,14 @@ namespace MonsterDex.DataLayer
                 Id = 3,
                 Name = "Brachydios",
                 Species = Monster.SpeciesType.BruteWyvern,
-                Element = new List<Element>()
+                ElementList = new List<Element>()
                 {
                     new Element()
                     {
                         MonsterElement = Element.ElementType.None
                     }
                 },
-                Weakness = new List<Element>()
+                WeaknessList = new List<Element>()
                 {
                     new Element()
                     {
@@ -126,7 +126,7 @@ namespace MonsterDex.DataLayer
                         MonsterElement = Element.ElementType.Dragon
                     }
                 },
-                Location = new List<Location>()
+                LocationList = new List<Location>()
                 {
                     new Location()
                     {
@@ -141,14 +141,14 @@ namespace MonsterDex.DataLayer
                 Id = 4,
                 Name = "Zinogre",
                 Species = Monster.SpeciesType.FangedWyvern,
-                Element = new List<Element>()
+                ElementList = new List<Element>()
                 {
                     new Element()
                     {
                         MonsterElement = Element.ElementType.Thunder
                     }
                 },
-                Weakness = new List<Element>()
+                WeaknessList = new List<Element>()
                 {
                     new Element()
                     {
@@ -167,7 +167,7 @@ namespace MonsterDex.DataLayer
                         MonsterElement = Element.ElementType.Dragon
                     }
                 },
-                Location = new List<Location>()
+                LocationList = new List<Location>()
                 {
                     new Location()
                     {
@@ -190,14 +190,14 @@ namespace MonsterDex.DataLayer
                 Id = 5,
                 Name = "Glavenus",
                 Species = Monster.SpeciesType.BruteWyvern,
-                Element = new List<Element>()
+                ElementList = new List<Element>()
                 {
                     new Element()
                     {
                         MonsterElement = Element.ElementType.Fire
                     }
                 },
-                Weakness = new List<Element>()
+                WeaknessList = new List<Element>()
                 {
                     new Element()
                     {
@@ -216,7 +216,7 @@ namespace MonsterDex.DataLayer
                         MonsterElement = Element.ElementType.Thunder
                     }
                 },
-                Location = new List<Location>()
+                LocationList = new List<Location>()
                 {
                     new Location()
                     {
