@@ -28,10 +28,9 @@ namespace MonsterDex.ViewModel
 
         private Monster _selectedMonster;
 		private Monster _detailedViewMonster;
+        private Monster _detailedAddViewMonster;
 
-		
-
-		private MonsterBusiness _monsterBusiness;
+        private MonsterBusiness _monsterBusiness;
 
 
 
@@ -78,11 +77,24 @@ namespace MonsterDex.ViewModel
 			}
 		}
 
-		#endregion
+        public Monster DetailedAddViewMonster
+        {
+            get { return _detailedAddViewMonster; }
+            set {
+                if (_detailedAddViewMonster == value)
+                {
+                    return;
+                }
+                _detailedAddViewMonster = value;
+                OnPropertyChanged("DetailedAddViewMonster");
+            }
+        }
 
-		#region CONSTRUCTORS
+        #endregion
 
-		public MonsterDexViewModel()
+        #region CONSTRUCTORS
+
+        public MonsterDexViewModel()
 		{
 
 		}
@@ -92,6 +104,7 @@ namespace MonsterDex.ViewModel
 
 			_monsterBusiness = monsterBuissness;
 			_allMonsters = new ObservableCollection<Monster>(monsterBuissness.AllMonsters());
+            ResetDetailedAddViewMonster();
 			UpdateImagePath();
 			ButtonCommand = new RelayCommand(new Action<Object>(ButtonPressed));
 
@@ -165,12 +178,40 @@ namespace MonsterDex.ViewModel
 
 		private void AddPressed()
         {
-            throw new NotImplementedException();
+            if (_detailedAddViewMonster != null)
+            {
+
+                _monsterBusiness.AddMonster(_detailedAddViewMonster);
+                _allMonsters.Add(DetailedAddViewMonster);
+                ResetDetailedAddViewMonster();
+
+            }
+    }
+
+        private void ResetDetailedAddViewMonster()
+        {
+            _detailedAddViewMonster = new Monster();
+            _detailedAddViewMonster.Id = 0;
+            _detailedAddViewMonster.Name = "";
+            _detailedAddViewMonster.Species = Monster.SpeciesType.Unknown;
+            _detailedAddViewMonster.ElementList = new List<Element>();
+            _detailedAddViewMonster.WeaknessList = new List<Element>();
+            _detailedAddViewMonster.LocationList = new List<Location>();
+            _detailedAddViewMonster.ImageFileName = "";
+            _detailedAddViewMonster.ImageFilePath = "";
+            OnPropertyChanged("DetailedAddViewMonster");
         }
 
         private void UpdatePressed()
         {
-            throw new NotImplementedException();
+            Monster monsterToUpdate = _allMonsters.FirstOrDefault(c => c.Id == SelectedMonster.Id);
+
+            if (monsterToUpdate != null)
+            {
+                _monsterBusiness.UpdateMonster(DetailedViewMonster);
+                _allMonsters.Remove(monsterToUpdate);
+                _allMonsters.Add(DetailedViewMonster);
+            }
         }
 
         private void DeletePressed()

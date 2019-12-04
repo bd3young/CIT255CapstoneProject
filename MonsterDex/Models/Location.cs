@@ -11,7 +11,7 @@ namespace MonsterDex.Models
 
         #region ENUM
 
-        public enum LocationType { AncientForest, WildspireWaste, CoralHighlands, RottenVale, EldersRecess, TheGuidingLands }
+        public enum LocationType { AncientForest, WildspireWaste, CoralHighlands, RottenVale, EldersRecess, TheGuidingLands, Unknown }
 
         private Dictionary<string, LocationType> BinaryOperations = new Dictionary<string, LocationType>()
         {

@@ -11,7 +11,7 @@ namespace MonsterDex.Models
     {
         #region ENUMS
 
-        public enum SpeciesType { FangedWyvern, BirdWyvern, BruteWyvern, PiscineWyvern, FlyingWyvern, ElderDragon }
+        public enum SpeciesType { FangedWyvern, BirdWyvern, BruteWyvern, PiscineWyvern, FlyingWyvern, ElderDragon, Unknown }
 
         private Dictionary<string, SpeciesType> BinaryOperations = new Dictionary<string, SpeciesType>()
         {

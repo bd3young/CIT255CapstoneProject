@@ -10,7 +10,7 @@ namespace MonsterDex.Models
     {
         #region ENUM
 
-        public enum ElementType { Fire, Water, Ice, Thunder, Dragon, None }
+        public enum ElementType { Fire, Water, Ice, Thunder, Dragon, None, Unknown }
 
         #endregion
 

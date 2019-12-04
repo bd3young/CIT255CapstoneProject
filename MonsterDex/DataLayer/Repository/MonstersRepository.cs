@@ -42,6 +42,7 @@ namespace MonsterDex.DataLayer.Repository
 
         public void Add(Monster monster)
         {
+            monster.Id = NextId();
             _monsters.Add(monster);
             _dataService.WriteAll(_monsters);
         }
@@ -73,6 +74,14 @@ namespace MonsterDex.DataLayer.Repository
             _monsters.Remove(_monsters.FirstOrDefault(c => c.Id == monster.Id));
             _monsters.Add(monster);
             _dataService.WriteAll(_monsters);
+        }
+
+        private int NextId()
+        {
+            //
+            // get maximum id number and return incremented value
+            //
+            return ++_monsters.OrderByDescending(c => c.Id).First().Id;
         }
     }
 }
