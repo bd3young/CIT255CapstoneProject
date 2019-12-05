@@ -29,9 +29,18 @@ namespace MonsterDex.ViewModel
         private Monster _selectedMonster;
         private Monster _detailedViewMonster;
         private Monster _detailedAddViewMonster;
+        private List<Element.ElementType> _detailedViewElement;
+        private List<Location.LocationType> _detailedViewLocation;
+
+        private Element.ElementType _selectedWeaknessElement;
+        private Element.ElementType _selectedRealElement;
+
+        private Element _selectedMonsterElement;
+        private Location _selectedMonsterLocation;
+        private Element _selectedMonsterRealElement;
 
         private List<Element> _listWeaknesses;
-        private Element _detailedViewElement;
+
 
 
 
@@ -110,7 +119,7 @@ namespace MonsterDex.ViewModel
             }
         }
 
-        public Element DetailedViewElement
+        public List<Element.ElementType> DetailedViewElement
         {
             get { return _detailedViewElement; }
             set
@@ -122,6 +131,86 @@ namespace MonsterDex.ViewModel
                 _detailedViewElement = value;
                 OnPropertyChanged("DetailedViewElement");
 
+            }
+        }
+
+        public List<Location.LocationType> DetailedViewLocation
+        {
+            get { return _detailedViewLocation; }
+            set
+            {
+                if (_detailedViewLocation == value)
+                {
+                    return;
+                }
+                _detailedViewLocation = value;
+                OnPropertyChanged("DetailedViewLocation");
+            }
+        }
+
+        public Element.ElementType SelectedWeaknessElement
+		{
+			get { return _selectedWeaknessElement; }
+			set
+			{
+				if (_selectedWeaknessElement == value)
+				{
+					return;
+				}
+				_selectedWeaknessElement = value;
+			}
+		}
+
+        public Element.ElementType SelectedRealElement
+        {
+            get { return _selectedRealElement; }
+            set
+            {
+                if (_selectedRealElement == value)
+                {
+                    return;
+                }
+                _selectedRealElement = value;
+            }
+        }
+
+        public Element SelectedMonsterElement
+		{
+			get { return _selectedMonsterElement; }
+			set
+			{
+				if (_selectedMonsterElement == value)
+				{
+					return;
+				}
+				_selectedMonsterElement = value;
+				
+			}
+		}
+
+        public Location SelectedMonsterLocation
+        {
+            get { return _selectedMonsterLocation; }
+            set
+            {
+                if (_selectedMonsterLocation == value)
+                {
+                    return;
+                }
+                _selectedMonsterLocation = value;
+            }
+        }
+
+        public Element SelectedMonsterRealElement
+        {
+            get { return _selectedMonsterRealElement; }
+            set
+            {
+                if (_selectedMonsterRealElement == value)
+                {
+                    return;
+                }
+                _selectedMonsterRealElement = value;
             }
         }
 
@@ -140,6 +229,7 @@ namespace MonsterDex.ViewModel
             _monsterBusiness = monsterBuissness;
             _allMonsters = new ObservableCollection<Monster>(monsterBuissness.AllMonsters());
             ResetDetailedAddViewMonster();
+            ResetDetailedElementLocation();
             UpdateImagePath();
             ButtonCommand = new RelayCommand(new Action<Object>(ButtonPressed));
 
@@ -210,18 +300,12 @@ namespace MonsterDex.ViewModel
         {
             if (_detailedAddViewMonster.WeaknessList != null)
             {
-                if (WeaknessBool)
-                {
-                    _detailedAddViewMonster.WeaknessList = new List<Element>();
+				_selectedMonsterElement = new Element();
 
-                    WeaknessBool = false;
-                }
-                _detailedViewElement = new Element();
-                //_detailedViewElement = _detailedViewElement.MonsterElement;
+				_selectedMonsterElement.MonsterElement = _selectedWeaknessElement;
+				_detailedAddViewMonster.WeaknessList.Add(_selectedMonsterElement);
 
-                _detailedAddViewMonster.WeaknessList.Add(_detailedViewElement);
-
-            }
+			}
         }
 
         private void ViewPressed()
@@ -236,10 +320,6 @@ namespace MonsterDex.ViewModel
 
         private void UpdateDetailedViewCharacterToSelected()
         {
-            //_listWeaknesses = new List<Element>();
-            //_listWeaknesses.Add();
-            //_listWeaknesses.Add();
-
             _detailedViewMonster = new Monster();
             _detailedViewMonster.Id = _selectedMonster.Id;
             _detailedViewMonster.Name = _selectedMonster.Name;
@@ -256,7 +336,10 @@ namespace MonsterDex.ViewModel
         {
             if (_detailedAddViewMonster != null && _detailedAddViewMonster.Name != "")
             {
+                _selectedMonsterRealElement = new Element();
+                _selectedMonsterRealElement.MonsterElement = _selectedRealElement; 
 
+                _detailedAddViewMonster.ElementList.Add(_selectedMonsterRealElement); 
                 _monsterBusiness.AddMonster(_detailedAddViewMonster);
                 _allMonsters.Add(DetailedAddViewMonster);
                 ResetDetailedAddViewMonster();
@@ -276,6 +359,31 @@ namespace MonsterDex.ViewModel
             _detailedAddViewMonster.ImageFileName = "";
             _detailedAddViewMonster.ImageFilePath = "";
             OnPropertyChanged("DetailedAddViewMonster");
+
+		}
+
+        private void ResetDetailedElementLocation()
+        {
+
+            _detailedViewElement = new List<Element.ElementType>();
+            _detailedViewElement.Add(Element.ElementType.Dragon);
+            _detailedViewElement.Add(Element.ElementType.Fire);
+            _detailedViewElement.Add(Element.ElementType.Ice);
+            _detailedViewElement.Add(Element.ElementType.None);
+            _detailedViewElement.Add(Element.ElementType.Thunder);
+            _detailedViewElement.Add(Element.ElementType.Unknown);
+            _detailedViewElement.Add(Element.ElementType.Water);
+
+            _detailedViewLocation = new List<Location.LocationType>();
+            _detailedViewLocation.Add(Location.LocationType.AncientForest);
+            _detailedViewLocation.Add(Location.LocationType.CoralHighlands);
+            _detailedViewLocation.Add(Location.LocationType.EldersRecess);
+            _detailedViewLocation.Add(Location.LocationType.RottenVale);
+            _detailedViewLocation.Add(Location.LocationType.TheGuidingLands);
+            _detailedViewLocation.Add(Location.LocationType.Unknown);
+            _detailedViewLocation.Add(Location.LocationType.WildspireWaste);
+
+
         }
 
         private void UpdatePressed()

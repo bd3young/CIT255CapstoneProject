@@ -43,9 +43,10 @@ namespace MonsterDex.DataLayer
 
         public void WriteAll(IEnumerable<Monster> monsters)
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(List<Monster>), new XmlRootAttribute("Monsters"));
 
-            try
+			XmlSerializer serializer = new XmlSerializer(typeof(List<Monster>));
+
+			try
             {
                 StreamWriter writer = new StreamWriter(_dataFilePath);
                 using (writer)

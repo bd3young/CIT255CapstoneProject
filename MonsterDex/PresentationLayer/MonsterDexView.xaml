@@ -38,34 +38,44 @@
             <Setter Property="Height" Value="30"/>
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
         </Style>
+        <Style x:Key="ViewAddComboBoxStyle" TargetType="ComboBox">
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        </Style>
     </Window.Resources>
     <Window.DataContext>
         <viewModel:MonsterDexViewModel/>
     </Window.DataContext>
-    <Grid>
-        <StackPanel >
-            <Label Content="Monster Dex"
-                       FontSize="45"
-                       HorizontalAlignment="Center"/>
+    <TabControl
+        Background="Green">
+        <TabItem
+            Header="Monster Dex">
             <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="2*"/>
-                </Grid.ColumnDefinitions>
-                <Grid Grid.Column="0">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <Label Content="Monsters"
+                <StackPanel >
+                    <Label Content="Monster Dex"
+                       FontSize="45"
+                       HorizontalAlignment="Center"
+                   Height="60"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Label Content="Monsters"
                            FontSize="35"
                            Grid.Column="0"
                            HorizontalAlignment="Center"
-                           Grid.Row="0"/>
-                    <Border Grid.Row="1"
+                           Grid.Row="0"
+                           Height="50"/>
+                            <Border Grid.Row="1"
                             Style="{StaticResource BorderStyle}">
-                        <ListBox Grid.Column="0"
+                                <ListBox Grid.Column="0"
                               Grid.Row="1"
                               x:Name="MonsterListBox"
                               Height="410"
@@ -73,333 +83,389 @@
                               ItemsSource="{Binding AllMonsters}"
                               IsSynchronizedWithCurrentItem="True"
                               SelectedItem="{Binding SelectedMonster, Mode=TwoWay}">
-                            <ListBox.ItemTemplate>
-                                <DataTemplate>
-                                    <StackPanel
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel
                                         Orientation="Vertical">
-                                        <StackPanel
+                                                <StackPanel
                                             Orientation="Horizontal">
-                                            <Label
+                                                    <Label
                                                 Content="{Binding Id}"
                                                 Width="120"/>
-                                            <Label
+                                                    <Label
                                                 Content="{Binding Name }"
                                                 Padding="0,5"/>
-                                        </StackPanel>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </ListBox.ItemTemplate>
-                        </ListBox>
-                    </Border>
-                </Grid>
-                <Grid Grid.Column="1">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <Button Style="{StaticResource ButtonStyle}"
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
+                            </Border>
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Button Style="{StaticResource ButtonStyle}"
                             Grid.Row="0"
                             Content="VIEW"
                             Command="{Binding ButtonCommand}"
                             CommandParameter="View"/>
-                    <Button Style="{StaticResource ButtonStyle}"
+                            <Button Style="{StaticResource ButtonStyle}"
                             Grid.Row="1"
                             Content="ADD"
                             Command="{Binding ButtonCommand}"
                             CommandParameter="Add"/>
-                    <Button Style="{StaticResource ButtonStyle}"
+                            <Button Style="{StaticResource ButtonStyle}"
                             Grid.Row="2"
                             Content="UPDATE"
                             Command="{Binding ButtonCommand}"
                             CommandParameter="Update"/>
-                    <Button Style="{StaticResource ButtonStyle}"
+                            <Button Style="{StaticResource ButtonStyle}"
                             Grid.Row="3"
                             Content="DELETE"
                             Command="{Binding ButtonCommand}"
                             CommandParameter="Delete"/>
-                </Grid>
-                <Grid Grid.Column="2">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height=".5*"/>
-                        <RowDefinition Height="6*"/>
-                    </Grid.RowDefinitions>
-                    <Label Content="View"
+                        </Grid>
+                        <Grid Grid.Column="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height=".5*"/>
+                                <RowDefinition Height="6*"/>
+                            </Grid.RowDefinitions>
+                            <Label Content="View"
                            FontSize="35"
                            Grid.Column="0"
                            HorizontalAlignment="Center"
-                           
+                           Height="50"
                            Grid.Row="0"/>
-                    <Border Grid.Row="1"
+                            <Border Grid.Row="1"
                             Style="{StaticResource BorderStyle}">
-                        <TabControl Grid.Column="0"
+                                <TabControl Grid.Column="0"
                               Grid.Row="1"
                               Height="410"
                               Background="SaddleBrown"
                               >
-                            <TabItem Header="View">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
-                                        <ColumnDefinition Width="3*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="1*"/>
-                                        <RowDefinition Height="1*"/>
-                                        <RowDefinition Height="1*"/>
-                                        <RowDefinition Height="1*"/>
-                                        <RowDefinition Height="1*"/>
-                                        <RowDefinition Height="4*"/>
-                                    </Grid.RowDefinitions>
-                                    <Label Grid.Row="0"
+                                    <TabItem Header="View">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="56*"/>
+                                                <ColumnDefinition Width="45*"/>
+                                                <ColumnDefinition Width="303*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="4*"/>
+                                            </Grid.RowDefinitions>
+                                            <Label Grid.Row="0"
                                             Content="Name:"
-                                            Style="{StaticResource ViewLabelStyle}"/>
-                                    <TextBox Grid.Column="1" 
+                                            Style="{StaticResource ViewLabelStyle}" Grid.ColumnSpan="3" Margin="0,0,303,0.4"/>
+                                            <TextBox Grid.Column="2" 
                                         Grid.Row="0"
                                         Style="{StaticResource ViewTextBoxStyle}"
-                                             Text="{Binding DetailedViewMonster.Name}"/>
-                                    <Label Grid.Row="1"
+                                             Text="{Binding DetailedViewMonster.Name}" Margin="0.2,6,-1,6.4"/>
+                                            <Label
                                             Content="Type:"
-                                            Style="{StaticResource ViewLabelStyle}"/>
-                                    <TextBox Grid.Column="1" 
+                                            Style="{StaticResource ViewLabelStyle}" Grid.ColumnSpan="3" Margin="0,42,303,42.2" Grid.RowSpan="3"/>
+                                            <TextBox Grid.Column="2" 
                                         Grid.Row="1"
                                         Style="{StaticResource ViewTextBoxStyle}"
-                                             Text="{Binding DetailedViewMonster.Species}"/>
-                                    <Label Grid.Row="2"
+                                             Text="{Binding DetailedViewMonster.Species}" Margin="0.2,6.6,-1,5.8"/>
+                                            <Label Grid.Row="2"
                                             Content="Element:"
-                                            Style="{StaticResource ViewLabelStyle}"/>
-                                    <ListBox Grid.Column="1" 
+                                            Style="{StaticResource ViewLabelStyle}" Grid.ColumnSpan="3" Margin="0,0.2,303,0.2"/>
+                                            <ListBox Grid.Column="2" 
                                              Grid.Row="2"                                           
                                              ItemsSource="{Binding DetailedViewMonster.ElementList}"
-                                             Style="{StaticResource ViewListBoxStyle}">
-                                        <ListBox.ItemTemplate>
-                                            <DataTemplate>
-                                                <StackPanel
+                                             Style="{StaticResource ViewListBoxStyle}" Margin="0.2,6.2,0,6.2">
+                                                <ListBox.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <StackPanel
                                                     Orientation="Horizontal">
-                                                    <Label
+                                                            <Label
                                                         Content="{Binding MonsterElement }"
                                                         Padding="0,5"/>
-                                                </StackPanel>
-                                            </DataTemplate>
-                                        </ListBox.ItemTemplate>
-                                    </ListBox>
-                                    <Label Grid.Row="3"
+                                                        </StackPanel>
+                                                    </DataTemplate>
+                                                </ListBox.ItemTemplate>
+                                            </ListBox>
+                                            <Label Grid.Row="2"
                                             Content="Weakness:"
-                                            Style="{StaticResource ViewLabelStyle}"/>
-                                    <ListBox Grid.Column="1" 
+                                            Style="{StaticResource ViewLabelStyle}" Grid.ColumnSpan="3" Margin="0,42.2,303,42" Grid.RowSpan="3"/>
+                                            <ListBox Grid.Column="2" 
                                              Grid.Row="3"                                           
                                              ItemsSource="{Binding DetailedViewMonster.WeaknessList}"
-                                             Style="{StaticResource ViewListBoxStyle}">
-                                        <ListBox.ItemTemplate>
-                                            <DataTemplate>
-                                                <StackPanel
+                                             Style="{StaticResource ViewListBoxStyle}" Margin="0.2,5.8,0,6.6">
+                                                <ListBox.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <StackPanel
                                                     Orientation="Horizontal">
-                                                    <Label
+                                                            <Label
                                                         Content="{Binding MonsterElement }"
                                                         Padding="0,5"/>
-                                                </StackPanel>
-                                            </DataTemplate>
-                                        </ListBox.ItemTemplate>
-                                    </ListBox>
-                                    <Label Grid.Row="4"
+                                                        </StackPanel>
+                                                    </DataTemplate>
+                                                </ListBox.ItemTemplate>
+                                            </ListBox>
+                                            <Label Grid.Row="4"
                                             Content="Locations:"
-                                            Style="{StaticResource ViewLabelStyle}"/>
-                                    <ListBox Grid.Column="1" 
+                                            Style="{StaticResource ViewLabelStyle}" Grid.ColumnSpan="3" Margin="0,0.4,303,0"/>
+                                            <ListBox Grid.Column="2" 
                                              Grid.Row="4"                                           
                                              ItemsSource="{Binding DetailedViewMonster.LocationList}"
-                                             Style="{StaticResource ViewListBoxStyle}">
-                                        <ListBox.ItemTemplate>
-                                            <DataTemplate>
-                                                <StackPanel
+                                             Style="{StaticResource ViewListBoxStyle}" Margin="0.2,6.4,0,6">
+                                                <ListBox.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <StackPanel
                                                     Orientation="Horizontal">
-                                                    <Label
+                                                            <Label
                                                         Content="{Binding MonsterLocation }"
                                                         Padding="0,5"/>
-                                                </StackPanel>
-                                            </DataTemplate>
-                                        </ListBox.ItemTemplate>
-                                    </ListBox>
-                                    <Label Grid.Row="5"
+                                                        </StackPanel>
+                                                    </DataTemplate>
+                                                </ListBox.ItemTemplate>
+                                            </ListBox>
+                                            <Label Grid.Row="5"
                                             Content="Image:"
                                            
                                             Style="{StaticResource ViewLabelStyle}"
-                                           VerticalAlignment="Center"/>
-                                    <Image Source="{Binding DetailedViewMonster.ImageFilePath}"
+                                           VerticalAlignment="Center" Grid.ColumnSpan="3" Margin="0,66,303,66.6"/>
+                                            <Image Source="{Binding DetailedViewMonster.ImageFilePath}"
                                            Grid.Row="5"
-                                           Grid.Column="1"/>
-                                </Grid>
-                            </TabItem>
-                            <TabItem Header="Add"
+                                           Grid.Column="2" Margin="0.2,0,0,-0.4"/>
+                                        </Grid>
+                                    </TabItem>
+                                    <TabItem Header="Add"
                                      >
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
-                                        <ColumnDefinition Width="3*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="1*"/>
-                                        <RowDefinition Height="1*"/>
-                                        <RowDefinition Height="1*"/>
-                                        <RowDefinition Height="1*"/>
-                                        <RowDefinition Height="1*"/>
-                                        <RowDefinition Height="1*"/>
-                                        <RowDefinition Height="1*"/>
-                                        <RowDefinition Height="2*"/>
-                                    </Grid.RowDefinitions>
-                                    <Label Grid.Row="0"
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="3*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="2*"/>
+                                            </Grid.RowDefinitions>
+                                            <Label Grid.Row="0"
                                             Content="Name:"
                                             Style="{StaticResource ViewLabelStyle}"/>
-                                    <TextBox Grid.Column="1" 
+                                            <TextBox Grid.Column="1" 
                                              Grid.Row="0"
                                              Style="{StaticResource ViewAddTextBoxStyle}"
                                              Text="{Binding DetailedAddViewMonster.Name}"/>
-                                    <Label Grid.Row="1"
+                                            <Label Grid.Row="1"
                                            Content="Type:"
                                            Style="{StaticResource ViewLabelStyle}"/>
-                                    <TextBox Grid.Column="1" 
+                                            <TextBox Grid.Column="1" 
                                              Grid.Row="1"
                                              Style="{StaticResource ViewAddTextBoxStyle}"
                                              Text="{Binding DetailedAddViewMonster.Species}"/>
-                                    <Label Grid.Row="2"
+                                            <Label Grid.Row="2"
                                             Content="Element:"
                                             Style="{StaticResource ViewLabelStyle}"/>
-                                    <TextBox Grid.Column="1" 
+                                            <ComboBox Grid.Column="1" 
                                              Grid.Row="2"                                           
-                                             Style="{StaticResource ViewAddTextBoxStyle}"
-                                             Text="{Binding DetailedAddViewMonster.ElementList}"/>
-                                    <Label Grid.Row="3"
+                                             Style="{StaticResource ViewAddComboBoxStyle}"
+                                             ItemsSource="{Binding DetailedViewElement}"
+                                                      SelectedItem="{Binding SelectedRealElement}">
+                                                <ComboBox.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding }"
+                                                                   />
+                                                    </DataTemplate>
+                                                </ComboBox.ItemTemplate>
+                                            </ComboBox>
+                                            <Label Grid.Row="3"
                                             Content="Weakness:"
                                             Style="{StaticResource ViewLabelStyle}"/>
-                                    <TextBox Grid.Column="1" 
+                                            <ComboBox Grid.Column="1" 
                                              Grid.Row="3"                                           
-                                             Style="{StaticResource ViewAddTextBoxStyle}"
-                                             Text="{Binding DetailedViewElement.MonsterElement}"/>
-                                    <Button Grid.Column="1"
+                                             Style="{StaticResource ViewAddComboBoxStyle}"
+                                             ItemsSource="{Binding DetailedViewElement}"
+                                                      SelectedItem="{Binding SelectedWeaknessElement}">
+                                                <ComboBox.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding }"
+                                                                   />
+                                                    </DataTemplate>
+                                                </ComboBox.ItemTemplate>
+                                            </ComboBox>
+
+                                            <Button Grid.Column="1"
                                             Grid.Row="4"
                                             Height="30"
                                             Width="150"
                                             Content="ADD TO WEAKNESSES"
                                             Command="{Binding ButtonCommand}"
                                             CommandParameter="ADDWEAKNESS"/>
-                                    <Label Grid.Row="5"
+                                            <Label Grid.Row="5"
                                             Content="Locations:"
                                             Style="{StaticResource ViewLabelStyle}"/>
-                                    <TextBox Grid.Column="1" 
+                                            <TextBox Grid.Column="1" 
                                              Grid.Row="5"                                           
                                              Style="{StaticResource ViewAddTextBoxStyle}"
                                              Text="{Binding DetailedAddViewMonster.LocationList}"/>
-                                    <Button Grid.Column="1"
+                                            <Button Grid.Column="1"
                                             Grid.Row="6"
                                             Height="30"
                                             Width="150"
                                             Content="ADD TO LOCATIONS"
                                             Command="{Binding ButtonCommand}"
                                             CommandParameter="ADDLOCATION"/>
-                                    <Label Grid.Row="7"
+                                            <Label Grid.Row="7"
                                             Content="Image:"
                                            
                                             Style="{StaticResource ViewLabelStyle}"
                                            VerticalAlignment="Center"/>
-                                </Grid>
-                            </TabItem>
-                            <TabItem Header="Update">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"/>
-                                        <ColumnDefinition Width="3*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="1*"/>
-                                        <RowDefinition Height="1*"/>
-                                        <RowDefinition Height="1*"/>
-                                        <RowDefinition Height="1*"/>
-                                        <RowDefinition Height="1*"/>
-                                        <RowDefinition Height="4*"/>
-                                    </Grid.RowDefinitions>
-                                    <Label Grid.Row="0"
+                                        </Grid>
+                                    </TabItem>
+                                    <TabItem Header="Update">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="3*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="4*"/>
+                                            </Grid.RowDefinitions>
+                                            <Label Grid.Row="0"
                                             Content="Name:"
                                             Style="{StaticResource ViewLabelStyle}"/>
-                                    <TextBox Grid.Column="1" 
+                                            <TextBox Grid.Column="1" 
                                         Grid.Row="0"
                                         Style="{StaticResource ViewAddTextBoxStyle}"
                                              Text="{Binding DetailedViewMonster.Name}"/>
-                                    <Label Grid.Row="1"
+                                            <Label Grid.Row="1"
                                             Content="Type:"
                                             Style="{StaticResource ViewLabelStyle}"/>
-                                    <TextBox Grid.Column="1" 
+                                            <TextBox Grid.Column="1" 
                                         Grid.Row="1"
                                         Style="{StaticResource ViewAddTextBoxStyle}"
                                              Text="{Binding DetailedViewMonster.Species}"/>
-                                    <Label Grid.Row="2"
+                                            <Label Grid.Row="2"
                                             Content="Element:"
                                             Style="{StaticResource ViewLabelStyle}"/>
-                                    <ListBox Grid.Column="1" 
+                                            <ListBox Grid.Column="1" 
                                              Grid.Row="2"                                           
                                              ItemsSource="{Binding DetailedViewMonster.ElementList}"
                                              Style="{StaticResource ViewListBoxStyle}">
-                                        <ListBox.ItemTemplate>
-                                            <DataTemplate>
-                                                <StackPanel
+                                                <ListBox.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <StackPanel
                                                     Orientation="Horizontal">
-                                                    <Label
+                                                            <Label
                                                         Content="{Binding MonsterElement }"
                                                         Padding="0,5"/>
-                                                </StackPanel>
-                                            </DataTemplate>
-                                        </ListBox.ItemTemplate>
-                                    </ListBox>
-                                    <Label Grid.Row="3"
+                                                        </StackPanel>
+                                                    </DataTemplate>
+                                                </ListBox.ItemTemplate>
+                                            </ListBox>
+                                            <Label Grid.Row="3"
                                             Content="Weakness:"
                                             Style="{StaticResource ViewLabelStyle}"/>
-                                    <ListBox Grid.Column="1" 
+                                            <ListBox Grid.Column="1" 
                                              Grid.Row="3"                                           
                                              ItemsSource="{Binding DetailedViewMonster.WeaknessList}"
                                              Style="{StaticResource ViewListBoxStyle}">
-                                        <ListBox.ItemTemplate>
-                                            <DataTemplate>
-                                                <StackPanel
+                                                <ListBox.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <StackPanel
                                                     Orientation="Horizontal">
-                                                    <Label
+                                                            <Label
                                                         Content="{Binding MonsterElement }"
                                                         Padding="0,5"/>
-                                                </StackPanel>
-                                            </DataTemplate>
-                                        </ListBox.ItemTemplate>
-                                    </ListBox>
-                                    <Label Grid.Row="4"
+                                                        </StackPanel>
+                                                    </DataTemplate>
+                                                </ListBox.ItemTemplate>
+                                            </ListBox>
+                                            <Label Grid.Row="4"
                                             Content="Locations:"
                                             Style="{StaticResource ViewLabelStyle}"/>
-                                    <ListBox Grid.Column="1" 
+                                            <ListBox Grid.Column="1" 
                                              Grid.Row="4"                                           
                                              ItemsSource="{Binding DetailedViewMonster.LocationList}"
                                              Style="{StaticResource ViewListBoxStyle}">
-                                        <ListBox.ItemTemplate>
-                                            <DataTemplate>
-                                                <StackPanel
+                                                <ListBox.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <StackPanel
                                                     Orientation="Horizontal">
-                                                    <Label
+                                                            <Label
                                                         Content="{Binding MonsterLocation }"
                                                         Padding="0,5"/>
-                                                </StackPanel>
-                                            </DataTemplate>
-                                        </ListBox.ItemTemplate>
-                                    </ListBox>
-                                    <Label Grid.Row="5"
+                                                        </StackPanel>
+                                                    </DataTemplate>
+                                                </ListBox.ItemTemplate>
+                                            </ListBox>
+                                            <Label Grid.Row="5"
                                             Content="Image:"
                                            
                                             Style="{StaticResource ViewLabelStyle}"
                                            VerticalAlignment="Center"/>
-                                    <Image Source="{Binding DetailedViewMonster.ImageFilePath}"
+                                            <Image Source="{Binding DetailedViewMonster.ImageFilePath}"
                                            Grid.Row="5"
                                            Grid.Column="1"/>
-                                </Grid>
-                            </TabItem>
-                        </TabControl>
-                    </Border>
-                </Grid>
-            </Grid>
-        </StackPanel>
+                                        </Grid>
+                                    </TabItem>
+                                </TabControl>
+                            </Border>
+                        </Grid>
+                    </Grid>
+                </StackPanel>
 
-    </Grid>
+            </Grid>
+        </TabItem>
+        <TabItem
+            Header="Information">
+            <Grid>
+                <StackPanel>
+                    <Label Content="Information"
+                           HorizontalAlignment="Center"
+                           FontSize="45"></Label>
+                </StackPanel>
+                <StackPanel>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="5*"/>
+                        </Grid.RowDefinitions>
+
+                        <StackPanel Grid.Row="1"
+                            Grid.Column="0">
+
+                        </StackPanel>
+                        <StackPanel Grid.Row="1"
+                            Grid.Column="1">
+
+                        </StackPanel>
+                        <StackPanel Grid.Row="1"
+                            Grid.Column="2">
+
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+            </Grid>
+        </TabItem>
+    </TabControl>
 </Window>

@@ -111,7 +111,9 @@ namespace MonsterDex.Models
 
         public Monster()
         {
-
+			ElementList = new List<Element>();
+			WeaknessList = new List<Element>();
+			LocationList = new List<Location>();
         }
 
         #endregion
