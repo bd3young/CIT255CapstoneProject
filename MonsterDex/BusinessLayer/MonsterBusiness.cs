@@ -142,6 +142,29 @@ namespace MonsterDex.BusinessLayer
             return GetMonster(id);
         }
 
+        public void DeleteMonster(int id)
+        {
+            try
+            {
+                if (GetMonster(id) != null)
+                {
+                    using (MonstersRepository repo = new MonstersRepository())
+                    {
+                        repo.Delete(id);
+                    }
 
+                    FileIoStatus = FileIoMessage.Complete;
+                }
+                else
+                {
+                    FileIoStatus = FileIoMessage.RecordNotFound;
+                }
+            }
+            catch (Exception)
+            {
+                FileIoStatus = FileIoMessage.FileAccessError;
+            }
+
+        }
     }
 }

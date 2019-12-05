@@ -36,6 +36,9 @@ namespace MonsterDex.Models
         private string _imageFileName;
         private string _imageFilePath;
         private ObservableCollection<Monster> _monsters;
+        //private Element _monsterElement;
+
+
 
         #endregion
 
@@ -93,7 +96,13 @@ namespace MonsterDex.Models
         {
             get { return _monsters; }
             set { _monsters = value; }
-        }   
+        }
+
+        //public Element MonsterElement
+        //{
+        //    get { return _monsterElement; }
+        //    set { _monsterElement = value; }
+        //}
 
 
         #endregion

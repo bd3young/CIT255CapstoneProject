@@ -243,7 +243,9 @@
                                         <RowDefinition Height="1*"/>
                                         <RowDefinition Height="1*"/>
                                         <RowDefinition Height="1*"/>
-                                        <RowDefinition Height="4*"/>
+                                        <RowDefinition Height="1*"/>
+                                        <RowDefinition Height="1*"/>
+                                        <RowDefinition Height="2*"/>
                                     </Grid.RowDefinitions>
                                     <Label Grid.Row="0"
                                             Content="Name:"
@@ -273,15 +275,26 @@
                                              Grid.Row="3"                                           
                                              Style="{StaticResource ViewAddTextBoxStyle}"
                                              Text="{Binding DetailedAddViewMonster.WeaknessList}"/>
-                                    <Label Grid.Row="4"
+                                    <Button Grid.Column="1"
+                                            Grid.Row="4"
+                                            Height="30"
+                                            Width="150"
+                                            Content="ADD TO WEAKNESSES"
+                                            Command="{Binding ButtonCommand}"/>
+                                    <Label Grid.Row="5"
                                             Content="Locations:"
                                             Style="{StaticResource ViewLabelStyle}"/>
                                     <TextBox Grid.Column="1" 
-                                             Grid.Row="4"                                           
+                                             Grid.Row="5"                                           
                                              Style="{StaticResource ViewAddTextBoxStyle}"
                                              Text="{Binding DetailedAddViewMonster.LocationList}"/>
-
-                                    <Label Grid.Row="5"
+                                    <Button Grid.Column="1"
+                                            Grid.Row="6"
+                                            Height="30"
+                                            Width="150"
+                                            Content="ADD TO LOCATIONS"
+                                            Command="{Binding ButtonCommand}"/>
+                                    <Label Grid.Row="7"
                                             Content="Image:"
                                            
                                             Style="{StaticResource ViewLabelStyle}"
@@ -379,9 +392,6 @@
                                            Grid.Row="5"
                                            Grid.Column="1"/>
                                 </Grid>
-                            </TabItem>
-                            <TabItem Header="Delete">
-
                             </TabItem>
                         </TabControl>
                     </Border>
