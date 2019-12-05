@@ -16,7 +16,16 @@ namespace MonsterDex.Models
 
         #region FEILDS
 
-        public ElementType MonsterElement { get; set; }   
+
+        private ElementType _monsterElement;
+
+        public ElementType MonsterElement
+        {
+            get { return _monsterElement; }
+            set { _monsterElement = value; }    
+        }
+
+
 
         #endregion
     }

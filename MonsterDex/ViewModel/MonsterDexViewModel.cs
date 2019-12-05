@@ -29,7 +29,10 @@ namespace MonsterDex.ViewModel
         private Monster _selectedMonster;
         private Monster _detailedViewMonster;
         private Monster _detailedAddViewMonster;
+
         private List<Element> _listWeaknesses;
+        private Element _detailedViewElement;
+
 
 
         private MonsterBusiness _monsterBusiness;
@@ -38,7 +41,7 @@ namespace MonsterDex.ViewModel
 
         public ICommand ButtonCommand { get; set; }
 
-
+        bool WeaknessBool = true;
         #endregion
 
         #region FIELDS
@@ -107,6 +110,21 @@ namespace MonsterDex.ViewModel
             }
         }
 
+        public Element DetailedViewElement
+        {
+            get { return _detailedViewElement; }
+            set
+            {
+                if (_detailedViewElement == value)
+                {
+                    return;
+                }
+                _detailedViewElement = value;
+                OnPropertyChanged("DetailedViewElement");
+
+            }
+        }
+
         #endregion
 
         #region CONSTRUCTORS
@@ -164,10 +182,10 @@ namespace MonsterDex.ViewModel
                 case "Delete":
                     DeletePressed();
                     break;
-                case "ADD TO WEAKNESSES":
+                case "ADDWEAKNESS":
                     WeaknessesPressed();
                     break;
-                case "ADD TO LOCATIONS":
+                case "ADDLOCATION":
                     LocationsPressed();
                     break;
                 default:
@@ -192,9 +210,17 @@ namespace MonsterDex.ViewModel
         {
             if (_detailedAddViewMonster.WeaknessList != null)
             {
-                _listWeaknesses = new List<Element>();
+                if (WeaknessBool)
+                {
+                    _detailedAddViewMonster.WeaknessList = new List<Element>();
 
-                //_listWeaknesses.Add(_detailedAddViewMonster.WeaknessList);
+                    WeaknessBool = false;
+                }
+                _detailedViewElement = new Element();
+                //_detailedViewElement = _detailedViewElement.MonsterElement;
+
+                _detailedAddViewMonster.WeaknessList.Add(_detailedViewElement);
+
             }
         }
 
