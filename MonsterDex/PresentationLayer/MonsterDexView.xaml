@@ -491,10 +491,21 @@
                     <Label Content="Information"
                            HorizontalAlignment="Center"
                            FontSize="45"></Label>
+                    <TextBox Background="SaddleBrown"
+                             FontSize="20"
+                             TextWrapping="Wrap"
+                        Text="Welcome to Monster Dex an app for you to store all of the monsters you encounter on your Monster Hunter journey. To get you started there is five different monsters already in your collection. You will just need to input the rest. Below are instructions on how to use the different tabs. Your are currently in the Information/Help tab, if you would like to get straight into adding monsters select the Monster Dex tab above. If you end up getting confused just come back to the information/help tab you get help."
+                               Width="950"
+                             Height="140"
+                             BorderBrush="Black"
+                             BorderThickness="4"
+                             IsReadOnly="True"/>
+                    
                 </StackPanel>
                 <StackPanel>
                     <Grid>
                         <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
                             <ColumnDefinition Width="1*"/>
                             <ColumnDefinition Width="1*"/>
                             <ColumnDefinition Width="1*"/>
@@ -506,7 +517,9 @@
 
                         <StackPanel Grid.Row="1"
                             Grid.Column="0">
-
+                            <Label Grid.Column="0"
+                                   Grid.Row="0"
+                                   Content="View"/>
                         </StackPanel>
                         <StackPanel Grid.Row="1"
                             Grid.Column="1">
@@ -516,9 +529,14 @@
                             Grid.Column="2">
 
                         </StackPanel>
+                        <StackPanel Grid.Row="1"
+                            Grid.Column="3">
+
+                        </StackPanel>
                     </Grid>
                 </StackPanel>
             </Grid>
+
         </TabItem>
     </TabControl>
 </Window>

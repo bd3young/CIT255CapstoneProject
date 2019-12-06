@@ -638,8 +638,8 @@ namespace MonsterDex.ViewModel
                         _allMonsters.Remove(monsterToUpdate);
                         _allMonsters.Add(DetailedViewMonster);
 
-                        _weaknessCount = 0;
-                        _locationCount = 0;
+                        _weaknessCountUpdate = 0;
+                        _locationCountUpdate = 0;
                         OnPropertyChanged("LocationCount");
                         OnPropertyChanged("WeaknessCount");
                         OnPropertyChanged("DetailedViewMonster");
