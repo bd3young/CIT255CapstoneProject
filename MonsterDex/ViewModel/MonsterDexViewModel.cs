@@ -31,18 +31,30 @@ namespace MonsterDex.ViewModel
         private Monster _detailedAddViewMonster;
         private List<Element.ElementType> _detailedViewElement;
         private List<Location.LocationType> _detailedViewLocation;
+        private List<Monster.SpeciesType> _detailedViewType;
+
+
+
 
         private Element.ElementType _selectedWeaknessElement;
+        private Element.ElementType _selectedWeaknessElementUpdate;
         private Element.ElementType _selectedRealElement;
-
-        private Element _selectedMonsterElement;
-        private Location _selectedMonsterLocation;
-        private Element _selectedMonsterRealElement;
-
-        private List<Element> _listWeaknesses;
-
+        private Element.ElementType _selectedRealElementUpdate;
+        private Location.LocationType _selectedLocation;
+        private Location.LocationType _selectedLocationUpdate;
+        private Monster.SpeciesType _selectedType;
+        private Monster.SpeciesType _selectedTypeUpdate;
 
 
+
+        private Element _phMonsterElement;
+        private Location _phMonsterLocation;
+        private Element _phMonsterRealElement;
+
+        private int _weaknessCount;
+        private int _locationCount;
+        private int _weaknessCountUpdate;
+        private int _locationCountUpdate;
 
         private MonsterBusiness _monsterBusiness;
 
@@ -50,7 +62,8 @@ namespace MonsterDex.ViewModel
 
         public ICommand ButtonCommand { get; set; }
 
-        bool WeaknessBool = true;
+        bool LocationUpdateBool = true;
+        bool WeaknessUpdateBool = true;
         #endregion
 
         #region FIELDS
@@ -105,17 +118,73 @@ namespace MonsterDex.ViewModel
             }
         }
 
-        public List<Element> ListWeaknesses
+        public List<Monster.SpeciesType> DetailedViewType
         {
-            get { return _listWeaknesses; }
+            get { return _detailedViewType; }
             set
             {
-                if (_listWeaknesses == value)
+                if (_detailedViewType == value)
                 {
                     return;
                 }
-                _listWeaknesses = value;
-                OnPropertyChanged("ListWeaknesses");
+                _detailedViewType = value;
+                OnPropertyChanged("DetailedViewType");
+            }
+        }
+
+        public int WeaknessCount
+        {
+            get { return _weaknessCount; }
+            set
+            {
+                if (_weaknessCount == value)
+                {
+                    return;
+                }
+                _weaknessCount = value;
+                OnPropertyChanged("WeaknessCount");
+            }
+        }
+
+        public int LocationCount
+        {
+            get { return _locationCount; }
+            set
+            {
+                if (_locationCount == value)
+                {
+                    return;
+                }
+                _locationCount = value;
+                OnPropertyChanged("LocationCount");
+            }
+        }
+
+        public int WeaknessCountUpdate
+        {
+            get { return _weaknessCountUpdate; }
+            set
+            {
+                if (_weaknessCountUpdate == value)
+                {
+                    return;
+                }
+                _weaknessCountUpdate = value;
+                OnPropertyChanged("WeaknessCountUpdate");
+            }
+        }
+
+        public int LocationCountUpdate
+        {
+            get { return _locationCountUpdate; }
+            set
+            {
+                if (_locationCountUpdate == value)
+                {
+                    return;
+                }
+                _locationCountUpdate = value;
+                OnPropertyChanged("LocationCountUpdate");
             }
         }
 
@@ -149,17 +218,56 @@ namespace MonsterDex.ViewModel
         }
 
         public Element.ElementType SelectedWeaknessElement
-		{
-			get { return _selectedWeaknessElement; }
-			set
-			{
-				if (_selectedWeaknessElement == value)
-				{
-					return;
-				}
-				_selectedWeaknessElement = value;
-			}
-		}
+        {
+            get { return _selectedWeaknessElement; }
+            set
+            {
+                if (_selectedWeaknessElement == value)
+                {
+                    return;
+                }
+                _selectedWeaknessElement = value;
+            }
+        }
+
+        public Element.ElementType SelectedWeaknessElementUpdate
+        {
+            get { return _selectedWeaknessElementUpdate; }
+            set
+            {
+                if (_selectedWeaknessElementUpdate == value)
+                {
+                    return;
+                }
+                _selectedWeaknessElementUpdate = value;
+            }
+        }
+
+        public Location.LocationType SelectedLocation
+        {
+            get { return _selectedLocation; }
+            set
+            {
+                if (_selectedLocation == value)
+                {
+                    return;
+                }
+                _selectedLocation = value;
+            }
+        }
+
+        public Location.LocationType SelectedLocationUpdate
+        {
+            get { return _selectedLocationUpdate; }
+            set
+            {
+                if (_selectedLocationUpdate == value)
+                {
+                    return;
+                }
+                _selectedLocationUpdate = value;
+            }
+        }
 
         public Element.ElementType SelectedRealElement
         {
@@ -174,43 +282,82 @@ namespace MonsterDex.ViewModel
             }
         }
 
-        public Element SelectedMonsterElement
-		{
-			get { return _selectedMonsterElement; }
-			set
-			{
-				if (_selectedMonsterElement == value)
-				{
-					return;
-				}
-				_selectedMonsterElement = value;
-				
-			}
-		}
-
-        public Location SelectedMonsterLocation
+        public Element.ElementType SelectedRealElementUpdate
         {
-            get { return _selectedMonsterLocation; }
+            get { return _selectedRealElementUpdate; }
             set
             {
-                if (_selectedMonsterLocation == value)
+                if (_selectedRealElementUpdate == value)
                 {
                     return;
                 }
-                _selectedMonsterLocation = value;
+                _selectedRealElementUpdate = value;
             }
         }
 
-        public Element SelectedMonsterRealElement
+        public Monster.SpeciesType SelectedType
         {
-            get { return _selectedMonsterRealElement; }
+            get { return _selectedType; }
             set
             {
-                if (_selectedMonsterRealElement == value)
+                if (_selectedType == value)
                 {
                     return;
                 }
-                _selectedMonsterRealElement = value;
+                _selectedType = value;
+            }
+        }
+
+        public Monster.SpeciesType SelectedTypeUpdate
+        {
+            get { return _selectedTypeUpdate; }
+            set
+            {
+                if (_selectedTypeUpdate == value)
+                {
+                    return;
+                }
+                _selectedTypeUpdate = value;
+            }
+        }
+
+        public Element PhMonsterElement
+        {
+            get { return _phMonsterElement; }
+            set
+            {
+                if (_phMonsterElement == value)
+                {
+                    return;
+                }
+                _phMonsterElement = value;
+
+            }
+        }
+
+        public Location PhMonsterLocation
+        {
+            get { return _phMonsterLocation; }
+            set
+            {
+                if (_phMonsterLocation == value)
+                {
+                    return;
+                }
+                _phMonsterLocation = value;
+            }
+        }
+
+        public Element PhMonsterRealElement
+        {
+            get { return _phMonsterRealElement; }
+            set
+            {
+                if (_phMonsterRealElement == value)
+                {
+                    return;
+                }
+                _phMonsterRealElement = value;
             }
         }
 
@@ -250,10 +397,6 @@ namespace MonsterDex.ViewModel
         public void InitializeViewModel(MonsterBusiness monsterBusiness)
         {
             _monsterBusiness = monsterBusiness;
-
-
-
-
         }
 
         private void ButtonPressed(object obj)
@@ -278,9 +421,57 @@ namespace MonsterDex.ViewModel
                 case "ADDLOCATION":
                     LocationsPressed();
                     break;
+                case "UPDATEWEAKNESS":
+                    WeaknessesPressedUpdate();
+                    break;
+                case "UPDATELOCATION":
+                    LocationsPressedUpdate();
+                    break;
+                    // make save buttons
                 default:
                     break;
             };
+        }
+
+        private void LocationsPressedUpdate()
+        {
+            if (_detailedViewMonster.LocationList != null)
+            {
+                if (LocationUpdateBool)
+                {
+                    _detailedViewMonster.LocationList = new List<Location>();
+
+                    LocationUpdateBool = false;
+                }
+
+                _phMonsterLocation = new Location();
+
+                _phMonsterLocation.MonsterLocation = _selectedLocationUpdate;
+                _detailedViewMonster.LocationList.Add(_phMonsterLocation);
+                _locationCountUpdate++;
+                OnPropertyChanged("LocationCountUpdate");
+            }
+
+        }
+
+        private void WeaknessesPressedUpdate()
+        {
+            if (_detailedViewMonster.WeaknessList != null)
+            {
+                if (WeaknessUpdateBool)
+                {
+                    _detailedViewMonster.WeaknessList = new List<Element>();
+
+                    WeaknessUpdateBool = false;
+                }
+
+                _phMonsterElement = new Element();
+
+                _phMonsterElement.MonsterElement = _selectedWeaknessElementUpdate;
+                _detailedViewMonster.WeaknessList.Add(_phMonsterElement);
+                _weaknessCountUpdate ++;
+                OnPropertyChanged("WeaknessCountUpdate");
+            }
         }
 
         //
@@ -289,7 +480,16 @@ namespace MonsterDex.ViewModel
 
         private void LocationsPressed()
         {
-            throw new NotImplementedException();
+            if (_detailedAddViewMonster.LocationList != null)
+            {
+                _phMonsterLocation = new Location();
+
+                _phMonsterLocation.MonsterLocation = _selectedLocation;
+                _detailedAddViewMonster.LocationList.Add(_phMonsterLocation);
+                _locationCount = _detailedAddViewMonster.LocationList.Count;
+                OnPropertyChanged("LocationCount");
+            }
+
         }
 
         //
@@ -300,12 +500,15 @@ namespace MonsterDex.ViewModel
         {
             if (_detailedAddViewMonster.WeaknessList != null)
             {
-				_selectedMonsterElement = new Element();
+                _phMonsterElement = new Element();
 
-				_selectedMonsterElement.MonsterElement = _selectedWeaknessElement;
-				_detailedAddViewMonster.WeaknessList.Add(_selectedMonsterElement);
+                _phMonsterElement.MonsterElement = _selectedWeaknessElement;
+                _detailedAddViewMonster.WeaknessList.Add(_phMonsterElement);
 
-			}
+                _weaknessCount = _detailedAddViewMonster.WeaknessList.Count;
+                OnPropertyChanged("WeaknessCount");
+
+            }
         }
 
         private void ViewPressed()
@@ -336,14 +539,19 @@ namespace MonsterDex.ViewModel
         {
             if (_detailedAddViewMonster != null && _detailedAddViewMonster.Name != "")
             {
-                _selectedMonsterRealElement = new Element();
-                _selectedMonsterRealElement.MonsterElement = _selectedRealElement; 
+                _phMonsterRealElement = new Element();
+                _phMonsterRealElement.MonsterElement = _selectedRealElement;
 
-                _detailedAddViewMonster.ElementList.Add(_selectedMonsterRealElement); 
+                _detailedAddViewMonster.Species = _selectedType;
+
+                _detailedAddViewMonster.ElementList.Add(_phMonsterRealElement);
                 _monsterBusiness.AddMonster(_detailedAddViewMonster);
                 _allMonsters.Add(DetailedAddViewMonster);
                 ResetDetailedAddViewMonster();
-
+                _weaknessCount = 0;
+                _locationCount = 0;
+                OnPropertyChanged("LocationCount");
+                OnPropertyChanged("WeaknessCount");
             }
         }
 
@@ -360,7 +568,7 @@ namespace MonsterDex.ViewModel
             _detailedAddViewMonster.ImageFilePath = "";
             OnPropertyChanged("DetailedAddViewMonster");
 
-		}
+        }
 
         private void ResetDetailedElementLocation()
         {
@@ -383,7 +591,14 @@ namespace MonsterDex.ViewModel
             _detailedViewLocation.Add(Location.LocationType.Unknown);
             _detailedViewLocation.Add(Location.LocationType.WildspireWaste);
 
-
+            _detailedViewType = new List<Monster.SpeciesType>();
+            _detailedViewType.Add(Monster.SpeciesType.BirdWyvern);
+            _detailedViewType.Add(Monster.SpeciesType.BruteWyvern);
+            _detailedViewType.Add(Monster.SpeciesType.ElderDragon);
+            _detailedViewType.Add(Monster.SpeciesType.FangedWyvern);
+            _detailedViewType.Add(Monster.SpeciesType.FlyingWyvern);
+            _detailedViewType.Add(Monster.SpeciesType.PiscineWyvern);
+            _detailedViewType.Add(Monster.SpeciesType.Unknown);
         }
 
         private void UpdatePressed()
@@ -396,9 +611,26 @@ namespace MonsterDex.ViewModel
 
                     if (monsterToUpdate != null)
                     {
+
+                        // make SaveElement/ SaveType Functions
+                        _phMonsterRealElement = new Element();
+                        _phMonsterRealElement.MonsterElement = _selectedRealElementUpdate;
+
+                        _detailedViewMonster.Species = new Monster.SpeciesType();
+                        _detailedViewMonster.Species = SelectedTypeUpdate;
+
+                        _detailedViewMonster.ElementList.Add(_phMonsterRealElement);
+
                         _monsterBusiness.UpdateMonster(DetailedViewMonster);
                         _allMonsters.Remove(monsterToUpdate);
                         _allMonsters.Add(DetailedViewMonster);
+
+                        _weaknessCount = 0;
+                        _locationCount = 0;
+                        OnPropertyChanged("LocationCount");
+                        OnPropertyChanged("WeaknessCount");
+                        LocationUpdateBool = true;
+                        WeaknessUpdateBool = true;
                     }
                 }
 

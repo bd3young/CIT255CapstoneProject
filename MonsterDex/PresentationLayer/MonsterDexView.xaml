@@ -268,10 +268,18 @@
                                             <Label Grid.Row="1"
                                            Content="Type:"
                                            Style="{StaticResource ViewLabelStyle}"/>
-                                            <TextBox Grid.Column="1" 
-                                             Grid.Row="1"
-                                             Style="{StaticResource ViewAddTextBoxStyle}"
-                                             Text="{Binding DetailedAddViewMonster.Species}"/>
+                                            <ComboBox Grid.Column="1" 
+                                             Grid.Row="1"                                           
+                                             Style="{StaticResource ViewAddComboBoxStyle}"
+                                             ItemsSource="{Binding DetailedViewType}"
+                                                      SelectedItem="{Binding SelectedType}">
+                                                <ComboBox.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding }"
+                                                                   />
+                                                    </DataTemplate>
+                                                </ComboBox.ItemTemplate>
+                                            </ComboBox>
                                             <Label Grid.Row="2"
                                             Content="Element:"
                                             Style="{StaticResource ViewLabelStyle}"/>
@@ -302,7 +310,10 @@
                                                     </DataTemplate>
                                                 </ComboBox.ItemTemplate>
                                             </ComboBox>
-
+                                            <TextBlock Grid.Row="4"
+                                                       Text="{Binding Path=WeaknessCount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                       HorizontalAlignment="Center"
+                                                       VerticalAlignment="Center"/>
                                             <Button Grid.Column="1"
                                             Grid.Row="4"
                                             Height="30"
@@ -313,10 +324,22 @@
                                             <Label Grid.Row="5"
                                             Content="Locations:"
                                             Style="{StaticResource ViewLabelStyle}"/>
-                                            <TextBox Grid.Column="1" 
+                                            <ComboBox Grid.Column="1" 
                                              Grid.Row="5"                                           
-                                             Style="{StaticResource ViewAddTextBoxStyle}"
-                                             Text="{Binding DetailedAddViewMonster.LocationList}"/>
+                                             Style="{StaticResource ViewAddComboBoxStyle}"
+                                             ItemsSource="{Binding DetailedViewLocation}"
+                                             SelectedItem="{Binding SelectedLocation}">
+                                                <ComboBox.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding }"
+                                                                   />
+                                                    </DataTemplate>
+                                                </ComboBox.ItemTemplate>
+                                            </ComboBox>
+                                            <TextBlock Grid.Row="6"
+                                                       Text="{Binding Path=LocationCount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                       HorizontalAlignment="Center"
+                                                       VerticalAlignment="Center"/>
                                             <Button Grid.Column="1"
                                             Grid.Row="6"
                                             Height="30"
@@ -343,7 +366,9 @@
                                                 <RowDefinition Height="1*"/>
                                                 <RowDefinition Height="1*"/>
                                                 <RowDefinition Height="1*"/>
-                                                <RowDefinition Height="4*"/>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="2*"/>
                                             </Grid.RowDefinitions>
                                             <Label Grid.Row="0"
                                             Content="Name:"
@@ -355,71 +380,92 @@
                                             <Label Grid.Row="1"
                                             Content="Type:"
                                             Style="{StaticResource ViewLabelStyle}"/>
-                                            <TextBox Grid.Column="1" 
-                                        Grid.Row="1"
-                                        Style="{StaticResource ViewAddTextBoxStyle}"
-                                             Text="{Binding DetailedViewMonster.Species}"/>
+                                            <ComboBox Grid.Column="1" 
+                                             Grid.Row="1"                                           
+                                             Style="{StaticResource ViewAddComboBoxStyle}"
+                                             ItemsSource="{Binding DetailedViewType}"
+                                                      SelectedItem="{Binding SelectedTypeUpdate}">
+                                                <ComboBox.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding }"
+                                                                   />
+                                                    </DataTemplate>
+                                                </ComboBox.ItemTemplate>
+                                            </ComboBox>
                                             <Label Grid.Row="2"
                                             Content="Element:"
                                             Style="{StaticResource ViewLabelStyle}"/>
-                                            <ListBox Grid.Column="1" 
+                                            <ComboBox Grid.Column="1" 
                                              Grid.Row="2"                                           
-                                             ItemsSource="{Binding DetailedViewMonster.ElementList}"
-                                             Style="{StaticResource ViewListBoxStyle}">
-                                                <ListBox.ItemTemplate>
+                                             Style="{StaticResource ViewAddComboBoxStyle}"
+                                             ItemsSource="{Binding DetailedViewElement}"
+                                                      SelectedItem="{Binding SelectedRealElementUpdate}">
+                                                <ComboBox.ItemTemplate>
                                                     <DataTemplate>
-                                                        <StackPanel
-                                                    Orientation="Horizontal">
-                                                            <Label
-                                                        Content="{Binding MonsterElement }"
-                                                        Padding="0,5"/>
-                                                        </StackPanel>
+                                                        <TextBlock Text="{Binding }"
+                                                                   />
                                                     </DataTemplate>
-                                                </ListBox.ItemTemplate>
-                                            </ListBox>
+                                                </ComboBox.ItemTemplate>
+                                            </ComboBox>
                                             <Label Grid.Row="3"
                                             Content="Weakness:"
                                             Style="{StaticResource ViewLabelStyle}"/>
-                                            <ListBox Grid.Column="1" 
+                                            <ComboBox Grid.Column="1" 
                                              Grid.Row="3"                                           
-                                             ItemsSource="{Binding DetailedViewMonster.WeaknessList}"
-                                             Style="{StaticResource ViewListBoxStyle}">
-                                                <ListBox.ItemTemplate>
+                                             Style="{StaticResource ViewAddComboBoxStyle}"
+                                             ItemsSource="{Binding DetailedViewElement}"
+                                                      SelectedItem="{Binding SelectedWeaknessElementUpdate}">
+                                                <ComboBox.ItemTemplate>
                                                     <DataTemplate>
-                                                        <StackPanel
-                                                    Orientation="Horizontal">
-                                                            <Label
-                                                        Content="{Binding MonsterElement }"
-                                                        Padding="0,5"/>
-                                                        </StackPanel>
+                                                        <TextBlock Text="{Binding }"
+                                                                   />
                                                     </DataTemplate>
-                                                </ListBox.ItemTemplate>
-                                            </ListBox>
-                                            <Label Grid.Row="4"
+                                                </ComboBox.ItemTemplate>
+                                            </ComboBox>
+                                            <TextBlock Grid.Row="4"
+                                                       Text="{Binding Path=WeaknessCountUpdate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                       HorizontalAlignment="Center"
+                                                       VerticalAlignment="Center"/>
+                                            <Button Grid.Column="1"
+                                            Grid.Row="4"
+                                            Height="30"
+                                            Width="150"
+                                            Content="UPDATE WEAKNESSES"
+                                            Command="{Binding ButtonCommand}"
+                                            CommandParameter="UPDATEWEAKNESS"/>
+                                            <Label Grid.Row="5"
                                             Content="Locations:"
                                             Style="{StaticResource ViewLabelStyle}"/>
-                                            <ListBox Grid.Column="1" 
-                                             Grid.Row="4"                                           
-                                             ItemsSource="{Binding DetailedViewMonster.LocationList}"
-                                             Style="{StaticResource ViewListBoxStyle}">
-                                                <ListBox.ItemTemplate>
+                                            <ComboBox Grid.Column="1" 
+                                             Grid.Row="5"                                           
+                                             Style="{StaticResource ViewAddComboBoxStyle}"
+                                             ItemsSource="{Binding DetailedViewLocation}"
+                                             SelectedItem="{Binding SelectedLocationUpdate}">
+                                                <ComboBox.ItemTemplate>
                                                     <DataTemplate>
-                                                        <StackPanel
-                                                    Orientation="Horizontal">
-                                                            <Label
-                                                        Content="{Binding MonsterLocation }"
-                                                        Padding="0,5"/>
-                                                        </StackPanel>
+                                                        <TextBlock Text="{Binding }"
+                                                                   />
                                                     </DataTemplate>
-                                                </ListBox.ItemTemplate>
-                                            </ListBox>
-                                            <Label Grid.Row="5"
+                                                </ComboBox.ItemTemplate>
+                                            </ComboBox>
+                                            <TextBlock Grid.Row="6"
+                                                       Text="{Binding Path=LocationCountUpdate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                                       HorizontalAlignment="Center"
+                                                       VerticalAlignment="Center"/>
+                                            <Button Grid.Column="1"
+                                            Grid.Row="6"
+                                            Height="30"
+                                            Width="150"
+                                            Content="UPDATE LOCATIONS"
+                                            Command="{Binding ButtonCommand}"
+                                            CommandParameter="UPDATELOCATION"/>
+                                            <Label Grid.Row="7"
                                             Content="Image:"
                                            
                                             Style="{StaticResource ViewLabelStyle}"
                                            VerticalAlignment="Center"/>
                                             <Image Source="{Binding DetailedViewMonster.ImageFilePath}"
-                                           Grid.Row="5"
+                                           Grid.Row="7"
                                            Grid.Column="1"/>
                                         </Grid>
                                     </TabItem>

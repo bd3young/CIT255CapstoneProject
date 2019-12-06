@@ -13,15 +13,15 @@ namespace MonsterDex.Models
 
         public enum LocationType { AncientForest, WildspireWaste, CoralHighlands, RottenVale, EldersRecess, TheGuidingLands, Unknown }
 
-        private Dictionary<string, LocationType> BinaryOperations = new Dictionary<string, LocationType>()
-        {
-            { "Ancient Forest", LocationType.AncientForest },
-            { "Wildspire Waste", LocationType.WildspireWaste },
-            { "Coral Highlands", LocationType.CoralHighlands },
-            { "Rotten Vale", LocationType.RottenVale },
-            { "Elder's Recess", LocationType.EldersRecess },
-            { "The Guiding Lands", LocationType.TheGuidingLands },
-        };
+        //private Dictionary<string, LocationType> BinaryOperations = new Dictionary<string, LocationType>()
+        //{
+        //    { "Ancient Forest", LocationType.AncientForest },
+        //    { "Wildspire Waste", LocationType.WildspireWaste },
+        //    { "Coral Highlands", LocationType.CoralHighlands },
+        //    { "Rotten Vale", LocationType.RottenVale },
+        //    { "Elder's Recess", LocationType.EldersRecess },
+        //    { "The Guiding Lands", LocationType.TheGuidingLands },
+        //};
 
         #endregion
 
