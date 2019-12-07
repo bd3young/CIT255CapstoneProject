@@ -640,8 +640,8 @@ namespace MonsterDex.ViewModel
 
                         _weaknessCountUpdate = 0;
                         _locationCountUpdate = 0;
-                        OnPropertyChanged("LocationCount");
-                        OnPropertyChanged("WeaknessCount");
+                        OnPropertyChanged("LocationCountUpdate");
+                        OnPropertyChanged("WeaknessCountUpdate");
                         OnPropertyChanged("DetailedViewMonster");
                         LocationUpdateBool = true;
                         WeaknessUpdateBool = true;
