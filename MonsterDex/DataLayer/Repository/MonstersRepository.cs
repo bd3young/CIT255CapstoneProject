@@ -80,9 +80,6 @@ namespace MonsterDex.DataLayer.Repository
 
         private int NextId()
         {
-            //
-            // get maximum id number and return incremented value
-            //
             return _monsters.OrderByDescending(c => c.Id).First().Id;
         }
     }

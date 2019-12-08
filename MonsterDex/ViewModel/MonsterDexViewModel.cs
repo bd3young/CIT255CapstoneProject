@@ -625,7 +625,7 @@ namespace MonsterDex.ViewModel
 
         private void UpdatePressed()
         {
-            if (_detailedViewMonster != null)
+            if (_detailedViewMonster != null && _selectedMonster != null && _selectedMonster.Name != _detailedViewMonster.Name)
             {
                 if (_selectedMonster.Id == _detailedViewMonster.Id)
                 {
